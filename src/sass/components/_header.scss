@@ -1,0 +1,127 @@
+.header__container{
+    width: 100%;
+    padding-top: 42px ;
+    padding-bottom: 64px;
+    background-color: black;
+
+    @media screen and (min-width: $tablet){
+        padding-top: 40px ;
+        padding-bottom: 60px;
+    }
+}
+
+.header__navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 62px;
+
+    @media screen and (min-width: $tablet){
+        margin-bottom: 40px;
+        align-items: baseline;;
+    }
+}
+
+.logo{
+    padding: 10px;
+    @media screen and (min-width: $tablet){
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.logo__svg{
+    color: #fff;
+    @media screen and (min-width: $tablet){
+        margin-right: 12px;
+    }
+    
+}
+
+.logo__text{
+    display: none;
+
+    @media screen and (min-width: $tablet){
+        display: block;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 35px;
+        color: #fff;
+    }
+}
+
+.header__list{
+    display: flex;
+}
+
+.header__li{
+    margin-right: 40px;
+    &:last-child{
+        margin-right: 0;
+    }
+}
+
+.header__link{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.current::after{
+    position: relative;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    content: "";
+    width: 69px;
+    height: 3px;
+    background-color: #FF001B;
+}
+
+.header__btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header__btn{
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 13px 36px;
+    margin-right: 20px;
+    height: 44px;
+    width: 130px;
+
+    &:last-child{
+        margin-right: 0;
+    }
+
+    &:hover,
+    &:focus{
+        background: #FF6B01;
+        border: 1px solid #FF6B01;
+        -webkit-box-shadow: 0px 0px 100px -24px rgba(255, 107, 1, 1);
+        -moz-box-shadow: 0px 0px 100px -24px rgba(255, 107, 1, 1);
+        box-shadow: 0px 0px 100px -24px rgba(255, 107, 1, 1);
+    }
+
+    @media screen and (min-width: $tablet){
+        width: 152px;
+        padding: 13px 46px;
+        margin-right: 32px;
+    }
+
+    @media screen and (min-width: $desktop){
+        width: 148px;
+        padding: 13px 41.5px;
+        margin-right: 16px;
+    }
+}
