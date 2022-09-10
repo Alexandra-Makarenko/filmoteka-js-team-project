@@ -1,2 +1,2 @@
 import './sass/index.scss';
-import './pagination';
+import './js/pagination';
