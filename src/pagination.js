@@ -1,12 +1,12 @@
 import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
 
-import iconPagination from '../images/iconPagination.svg';
+// import iconPagination from '../images/iconPagination.svg';
 
 // console.log(iconPagination);
 
-const arrowIcon = `${iconPagination}#icon-arrow-start`;
-const dotsIcon = `${iconPagination}#icon-dots`;
+// const arrowIcon = `${iconPagination}#icon-arrow-start`;
+// const dotsIcon = `${iconPagination}#icon-dots`;
 
 console.log('fff');
 

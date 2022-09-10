@@ -1,1 +1,1 @@
-import './js/pagination';
+import './pagination';
