@@ -1,12 +1,12 @@
 import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
 
-// import iconPagination from '../images/iconPagination.svg';
+import iconPagination from '/src/images/svg/pagination.svg';
 
-// console.log(iconPagination);
+console.log(iconPagination);
 
-// const arrowIcon = `${iconPagination}#icon-arrow-start`;
-// const dotsIcon = `${iconPagination}#icon-dots`;
+const arrowIcon = `${iconPagination}#icon-arrow-start`;
+const dotsIcon = `${iconPagination}#icon-dots`;
 
 console.log('fff');
 
@@ -23,8 +23,8 @@ const options = {
     currentPage:
       '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
     moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '<a href="#" class="tui-page-btn tui-{{type}} hide-{{type}}">' +
+      `<svg class="tui-ico-{{type}}" width="16" height="16"><use href="${arrowIcon}-{{type}}"></use></svg>` +
       '</a>',
     disabledMoveButton:
       '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +

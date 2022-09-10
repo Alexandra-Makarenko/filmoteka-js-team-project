@@ -12,6 +12,14 @@
 // .tui-ico-prev {
 //   overflow: hidden;
 // }
+.tui-pagination .tui-ico-ellip,
+.tui-pagination .tui-ico-first,
+.tui-pagination .tui-ico-last {
+  width: 16px;
+  height: 16px;
+  fill: var(--accent-color);
+  transition: all 250ms ease-in-out;
+}
 
 .section-pagination {
   margin-top: 40px;
@@ -82,7 +90,7 @@
 }
 
 .tui-pagination .tui-is-disabled:hover {
-  background-color: transparent;
+  background-color: var(--footer-bg-color);
   cursor: default;
 }
 
@@ -161,11 +169,11 @@
   font-size: 0px;
 }
 
-.tui-pagination .tui-prev-is-ellip,
-.tui-pagination .tui-next-is-ellip {
-  padding: 0;
-  line-height: 1;
-}
+// .tui-pagination .tui-prev-is-ellip,
+// .tui-pagination .tui-next-is-ellip {
+//   padding: 0;
+//   line-height: 1;
+// }
 
 // .tui-pagination .tui-prev {
 //   margin-right: 10px;
@@ -175,11 +183,11 @@
 //   margin-left: 10px;
 // }
 
-.tui-pagination .tui-ico-first {
-  width: 11px;
-  height: 10px;
-  background-position: 0px 0px;
-}
+// .tui-pagination .tui-ico-first {
+//   width: 11px;
+//   height: 10px;
+//   background-position: 0px 0px;
+// }
 
 .tui-pagination .tui-ico-prev {
   width: 6px;
@@ -200,17 +208,25 @@
 }
 
 .tui-pagination .tui-ico-ellip {
-  width: 10px;
+  width: 11px;
   height: 2px;
-  margin-top: 16px;
+  // margin-top: 16px;
   vertical-align: top;
   background-position: 0px -24px;
 }
 
-.tui-pagination .tui-is-disabled:hover {
-  background-color: var(--footer-bg-color);
-  cursor: default;
+.tui-pagination .tui-ico-ellip {
+  width: 11px;
+  height: 2px;
+  // margin-top: 16px;
+  vertical-align: top;
+  background-position: 0px -24px;
 }
+
+// .tui-pagination .tui-is-disabled:hover {
+//   background-color: var(--footer-bg-color);
+//   cursor: default;
+// }
 
 .tui-pagination .tui-is-disabled .tui-ico-prev {
   background-position: -26px -12px;
