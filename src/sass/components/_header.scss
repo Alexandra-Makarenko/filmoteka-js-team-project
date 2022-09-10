@@ -1,42 +1,52 @@
-.header__container{
+.header__container {
     width: 100%;
-    padding-top: 42px ;
+    padding-top: 42px;
     padding-bottom: 64px;
     background-color: black;
 
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover; 
-    flex-grow: 1; 
+    background-size: cover;
+    flex-grow: 1;
     background-color: #000;
-    background-image: linear-gradient(
-      rgba(47, 48, 58, 0.4), 
-      rgba(47, 48, 58, 0.4)),
-      url('../images/mobile/header-mobile-x1.png');
+    background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+            rgba(47, 48, 58, 0.4)),
+        url('../images/mobile/header-mobile-x1.png');
 
-    @media screen and (min-width: $tablet){
-        padding-top: 40px ;
+    @media screen and (min-width: $tablet) {
+        padding-top: 40px;
         padding-bottom: 60px;
-        background-image: linear-gradient(
-      rgba(47, 48, 58, 0.4), 
-      rgba(47, 48, 58, 0.4)),
-      url('../images/tablet/header-tablet-x1.png');
+        background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+                rgba(47, 48, 58, 0.4)),
+            url('../images/tablet/header-tablet-x1.png');
     }
 
-    @media screen and (min-width: $desktop){
-        background-image: linear-gradient(
-        rgba(47, 48, 58, 0.4), 
-        rgba(47, 48, 58, 0.4)),
-      url('../images/desktop/header-desktop-x1.png');
+    @media screen and (min-width: $desktop) {
+        background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+                rgba(47, 48, 58, 0.4)),
+            url('../images/desktop/header-desktop-x1.png');
     }
-
-//     @media screen and (min-device-pixel-ratio: 2),
-//            screen and (min-resolution: 192dpi),
-//            screen and (min-resolution: 2dppx){
-//         background-image: linear-gradient(rgba(47, 48, 58, 0.4),
-//                         rgba(47, 48, 58, 0.4)),
-//                           url('../images/desktop/header-desktop-x2.png');
-//   }
+}
+.header__container.header-home__container{
+    text-align: center;
+    padding-bottom: 92px;
+        background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+                    rgba(47, 48, 58, 0.4)),
+                url('../images/mobile/index-mobile-x1.png');
+        
+            @media screen and (min-width: $tablet) {
+                padding-top: 40px;
+                padding-bottom: 80px;
+                background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+                        rgba(47, 48, 58, 0.4)),
+                    url('../images/tablet/index-tablet-x1.png');
+            }
+        
+            @media screen and (min-width: $desktop) {
+                background-image: linear-gradient(rgba(47, 48, 58, 0.4),
+                        rgba(47, 48, 58, 0.4)),
+                    url('../images/desktop/index-desktop-x1.png');
+            }
 }
 
 .header__navigation{
@@ -65,7 +75,7 @@
 }
 
 .logo__svg{
-    color: #fff;
+    color: var(--main-color);
     @media screen and (min-width: $tablet){
         margin-right: 12px;
     }
@@ -82,7 +92,7 @@
         font-weight: 500;
         font-size: 30px;
         line-height: 35px;
-        color: #fff;
+        color: var(--main-color);
     }
 }
 
@@ -100,13 +110,17 @@
 }
 
 .header__link{
+    &:visited {
+            color: var(--main-color);
+        }
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--main-color);
+    
 }
 
 .current::after{
@@ -116,7 +130,7 @@
     transform: translateX(-50%);
     display: block;
     content: "";
-    width: 69px;
+    width: 100%;
     height: 3px;
     background-color: #FF001B;
 }
@@ -128,7 +142,7 @@
 }
 
 .header__btn{
-    border: 1px solid #FFFFFF;
+    border: 1px solid var(--main-color);
     border-radius: 5px;
     background-color: transparent;
     padding: 13px 36px;
@@ -160,4 +174,33 @@
         padding: 13px 41.5px;
         margin-right: 16px;
     }
+}
+
+.header__search{
+    position: relative;
+    display: inline-flex;
+ 
+    width: 280px;
+        @media screen and (min-width: $tablet) {
+                width:336px;
+                   }
+        
+            @media screen and (min-width: $desktop) {
+                width: 394px;
+                   }
+}
+
+.search__input{
+    width: 100%;
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+
+}
+.icon-search{
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    // stroke: var(--main-color);
 }
