@@ -1,7 +1,7 @@
 import ApiTopFilms from './fetchTopFilms';
 import { genresArray } from './array-of-genres';
 const topFilms = new ApiTopFilms();
-const mainRef = document.querySelector('main');
+const filmListRef = document.querySelector('.film_list');
 popularFilms(1);
 function popularFilms(page) {
   topFilms.fetchTopFilms(page).then(r => {
@@ -17,15 +17,23 @@ function popularFilms(page) {
           })
           .map(genre => genre.name);
         const yearOfRelease = film.release_date.split('-');
-        return `<div>
-        <img src="https://image.tmdb.org/t/p/w500${
-          film.poster_path
-        }" alt="poster">
-        <p>${film.title}</p>
-        <p>${genres.join(', ')} | ${yearOfRelease[0]}</p>
-        </div>`;
+        return `<li id="" class="film-list__item">
+  <img
+    src="https://image.tmdb.org/t/p/w500${film.poster_path}"
+    alt="Movie Name"
+    class="film-list__item-poster"
+    loading="lazy"
+  />
+  <div class="film-list__item-info">
+    <h3 class="film-list__item-title">${film.title}</h3>
+    <div class="film-list__item-details">
+      <span class="film-list__item-genres">${genres.join(', ')}</span>|
+      <span class="film-list__item-year">${yearOfRelease[0]}</span>
+    </div>
+  </div>
+</li>`;
       })
       .join('');
-    mainRef.insertAdjacentHTML('beforeend', listOfFilms);
+    filmListRef.insertAdjacentHTML('beforeend', listOfFilms);
   });
 }
