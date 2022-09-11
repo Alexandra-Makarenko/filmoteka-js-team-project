@@ -2,6 +2,7 @@ import Pagination from 'tui-pagination';
 import popularFilms from './api-top-films';
 // import 'tui-pagination/dist/tui-pagination.css';
 import iconPagination from '/src/images/svg/pagination.svg';
+import { pageUp } from './page-up';
 
 const arrowIcon = `${iconPagination}#icon-arrow-start`;
 const dotsIcon = `${iconPagination}#icon-dots`;
@@ -44,7 +45,7 @@ export const createPagination = () => {
   pagination.on('afterMove', async event => {
     const currentPage = event.page;
     popularFilms(currentPage);
-    // console.log(currentPage);
+    pageUp();
   });
 };
 
