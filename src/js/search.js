@@ -1,7 +1,4 @@
-import ApiService from './api-top-films';
-import { isQueryOrPopular } from './pagination';
-
-const apiService = new ApiService();
+import { isQueryOrPopular } from './api-top-films';
 
 const searchForm = document.querySelector('.header__search');
 
