@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Library</title>
+    <title>Home</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,13 +28,17 @@
       crossorigin="anonymous"
     />
   </head>
-
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/header-library.html"></include>
-    <include src="./partials/pagination.html"></include>
-    <main></main>
-    <script src="./js/queue.js"></script>
+
+    <include src="./partials/header-home.html"></include>
+    <include src="./partials/movie-modal.html"></include>
+
+    <main>
+      <include src="./partials/movie-cart.html"></include>
+      <include src="./partials/pagination.html"></include>
+      <include src="./partials/footer.html"></include>
+    </main>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

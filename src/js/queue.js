@@ -1,7 +1,14 @@
-const btn = document.querySelector('#queue');
+//заглушка айлішніків поки нема локального збереження
+const id = [1, 2, 3, 4];
+localStorage.setItem('id', JSON.stringify(id));
 
-btn.addEventListener('click', onClick);
+const refs = {
+  btn: document.querySelector('#queue'),
+};
 
-function onClick() {
-  console.log('hello');
+refs.btn.addEventListener('click', btnRenderQueueList);
+
+//рендер списку черги
+function btnRenderQueueList() {
+  console.log(localStorage.getItem('id'));
 }
