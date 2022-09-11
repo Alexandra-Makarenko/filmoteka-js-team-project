@@ -6,7 +6,7 @@
 // }
 
 .footer {
-  background-color: #f5f4fa;
+  background-color: var(--footer-bg-color);
 }
 
 .footer-logo {
@@ -18,9 +18,11 @@
   }
   @media screen and (min-width: $tablet) {
     padding-left: 50px;
+    padding-top: 30px;
   }
   @media screen and (min-width: $desktop) {
     padding-left: 110px;
+    padding-top: 30px;
   }
   font-family: 'Roboto';
   font-style: normal;
