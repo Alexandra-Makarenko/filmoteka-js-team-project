@@ -1,7 +1,10 @@
-const btn = document.querySelector('#queue');
+const id = [1, 2, 3, 4]
+localStorage.setItem("id", JSON.stringify(id))
 
-btn.addEventListener('click', onClick);
+const btn = document.querySelector('#queue')
 
-function onClick() {
-    console.log('hello');
+btn.addEventListener('click', btnRenderQueueList)
+
+function btnRenderQueueList() {
+    console.log(localStorage.getItem(id))
 }
