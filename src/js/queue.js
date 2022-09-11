@@ -1,10 +1,15 @@
+//заглушка айлішніків поки нема локального збереження 
 const id = [1, 2, 3, 4]
 localStorage.setItem("id", JSON.stringify(id))
 
-const btn = document.querySelector('#queue')
+const refs = {
+    btn: document.querySelector('#queue'),
 
-btn.addEventListener('click', btnRenderQueueList)
+}
 
+refs.btn.addEventListener('click', btnRenderQueueList)
+
+//рендер списку черги 
 function btnRenderQueueList() {
-    console.log(localStorage.getItem(id))
+    console.log(localStorage.getItem("id"))
 }
