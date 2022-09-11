@@ -1,0 +1,37 @@
+{{#each listOfFilms}}
+
+  {{!-- <li class='film-list__item' data-id='{{id}}'>
+    <img
+      class='film-list__item-poster'
+      alt='{{title}}'
+      src='{{poster_path}}'
+      onerror="this.src='https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227724992-stock-illustration-image-available-icon-flat-vector.jpg';"
+    />
+
+    <div class='film__info'>
+      <h2 class='film__name'>{{original_title}}</h2>
+      <p class='film__description'>{{genres}}
+        <span>|</span>
+        {{release_date}}
+        <span class='film__rating'>{{vote_average}}</span></p>
+    </div>
+  </li> --}}
+
+    <li id="" class="film-list__item">
+    <img
+      alt='{{title}}'
+      src='https://image.tmdb.org/t/p/w500{{posterPath}}'
+      onerror="this.src='https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227724992-stock-illustration-image-available-icon-flat-vector.jpg';"
+      class="film-list__item-poster"
+      loading="lazy"
+    />
+    <div class="film-list__item-info">
+      <h3 class="film-list__item-title">{{title}}/h3>
+      <div class="film-list__item-details">
+        <span class="film-list__item-genres">{{genres}}</span>
+        |
+        <span class="film-list__item-year">{{yearOfRelease}}</span>
+      </div>
+    </div>
+  </li>
+{{/each}}
