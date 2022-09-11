@@ -1,9 +1,10 @@
 import ApiTopFilms from './fetchTopFilms';
 import { genresArray } from './array-of-genres';
+import { genresArray } from './array-of-genres';
 const topFilms = new ApiTopFilms();
 const filmListRef = document.querySelector('.film_list');
-popularFilms(1);
-function popularFilms(page) {
+// popularFilms(1);
+export default function popularFilms(page) {
   topFilms.fetchTopFilms(page).then(r => {
     const listOfFilms = r.data.results
       .map(film => {
@@ -34,6 +35,6 @@ function popularFilms(page) {
 </li>`;
       })
       .join('');
-    filmListRef.insertAdjacentHTML('beforeend', listOfFilms);
+    filmListRef.innerHTML = listOfFilms;
   });
 }
