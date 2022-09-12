@@ -1,25 +1,27 @@
 import Pagination from 'tui-pagination';
 import popularFilms from './api-top-films';
 // import 'tui-pagination/dist/tui-pagination.css';
-import iconPagination from '/src/images/svg/pagination.svg';
+// import iconPagination from '/src/images/svg/pagination.svg';
 import { pageUp } from './page-up';
 
-const arrowIcon = `${iconPagination}#icon-arrow-start`;
-const dotsIcon = `${iconPagination}#icon-dots`;
+// const arrowIcon = `${iconPagination}#icon-arrow-start`;
+// const dotsIcon = `${iconPagination}#icon-dots`;
 
-// export const paginationSettings = {
-//   startPage: 1,
-//   searchType: null,
-//   pagination: null,
-//   totalItemsHome: null,
-// };
+export const paginationOptions = {
+  startPage: 1,
+  // searchType: null,
+  // pagination: null,
+  // totalItemsHome: null,
+};
 
-export const createPagination = () => {
+// console.log(paginationOptions.startPage);
+
+export const createPagination = (page, itemsPerPage, totalItems) => {
   const options = {
-    totalItems: 0,
-    itemsPerPage: 20,
+    page,
+    itemsPerPage,
+    totalItems,
     visiblePages: 5,
-    page: 1,
     centerAlign: false,
     template: {
       page: '<a href="#" class="tui-page-btn">{{page}}</a>',
@@ -40,13 +42,15 @@ export const createPagination = () => {
     },
   };
   const pagination = new Pagination('pagination', options);
-  popularFilms(options.page);
-  pagination.reset(400);
+  paginationOptions.pagination = pagination;
+
+  pagination.reset(totalItems);
   pagination.on('afterMove', async event => {
     const currentPage = event.page;
+    paginationOptions.startPage = currentPage;
     popularFilms(currentPage);
     pageUp();
   });
 };
 
-createPagination();
+// createPagination();
