@@ -15,7 +15,7 @@ const refs = {
   div: document.querySelector('#library'),
   text: document.querySelector('#text'),
   btnWatched: document.querySelector('#watched'),
-  filmList: document.querySelector('.library_list'),
+  filmList: document.querySelector('.film_list'),
 };
 
 refs.btnQueue.addEventListener('click', onBtnQueue);
@@ -28,7 +28,7 @@ const fetchQueueFilms = async (id) => {
   };
 
 function onBtnQueue() {
-  hideMessage();
+  // hideMessage();
   if (!savedQueueFilms) {
     refs.filmList.innerHTML = '<p>Sorry, list is empty(</p>'
   } 
@@ -54,12 +54,12 @@ function onBtnQueue() {
 }
 
 //заховати повідомлення "будь ласка, оберіть категорію"
-function hideMessage(){
-  if(refs.text.classList.contains("library-message")){
-    refs.text.classList.remove('library-message')
-    refs.text.classList.add('library-message-hidden')
-  }
-}
+// function hideMessage(){
+//   if(refs.text.classList.contains("library-message")){
+//     refs.text.classList.remove('library-message')
+//     refs.text.classList.add('library-message-hidden')
+//   }
+// }
 
 const fetchWatchedFilms = async (id) => {
   const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`);
@@ -68,7 +68,7 @@ const fetchWatchedFilms = async (id) => {
 };
 
 function onBtnWatched() {
-  hideMessage();
+  // hideMessage();
   if (!savedWatchedFilms) {
     refs.filmList.innerHTML = '<p>Sorry, list is empty(</p>'
   } 
