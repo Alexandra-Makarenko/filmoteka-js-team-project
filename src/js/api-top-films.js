@@ -1,6 +1,10 @@
 import ApiTopFilms from './fetchTopFilms';
 import { genresArray } from './array-of-genres';
-import { genresArray } from './array-of-genres';
+// import { genresArray } from './array-of-genres';
+import { createPagination, paginationOptions } from './pagination';
+
+// const page = paginationOptions.startPage;
+
 const topFilms = new ApiTopFilms();
 const filmListRef = document.querySelector('.film_list');
 // popularFilms(1);
@@ -18,7 +22,7 @@ export default function popularFilms(page) {
           })
           .map(genre => genre.name);
         const yearOfRelease = film.release_date.split('-');
-        return `<li id="" class="film-list__item">
+        return `<li film-id="${film.id} class="film-list__item">
   <img
     src="https://image.tmdb.org/t/p/w500${film.poster_path}"
     alt="Movie Name"
@@ -36,5 +40,13 @@ export default function popularFilms(page) {
       })
       .join('');
     filmListRef.innerHTML = listOfFilms;
+    const totalPages = r.data.total_pages;
+    const itemsPerPage = r.data.results.length;
+    paginationOptions.startPage = page;
+    console.log(paginationOptions.startPage);
+    createPagination(page, itemsPerPage, totalPages);
+    console.log(page);
   });
 }
+
+popularFilms(paginationOptions.startPage);
