@@ -8,19 +8,51 @@ export default function popularFilms(page) {
   topFilms.fetchTopFilms(page).then(r => {
     const listOfFilms = r.data.results
       .map(film => {
-        const genres = genresArray
-          .filter(genre => {
-            for (const id of film.genre_ids) {
-              if (id === genre.id) {
-                return genre.name;
-              }
-            }
-          })
-          .map(genre => genre.name);
-        const yearOfRelease = film.release_date.split('-');
-        return `<li id="" class="film-list__item">
+        return rendOneCard(film);
+      })
+      .join('');
+    filmListRef.innerHTML = listOfFilms;
+  });
+}
+
+function rendOneCard(film) {
+  const genres = decipherGenresIds(film);
+  const yearOfRelease = onYearOfFilm(film);
+  return patternOfCard(film, genres, yearOfRelease);
+}
+
+function decipherGenresIds(film) {
+  const genres = genresArray
+    .filter(genre => {
+      for (const id of film.genre_ids) {
+        if (id === genre.id) {
+          return genre.name;
+        }
+      }
+    })
+    .map(genre => genre.name);
+  if (genres.length < 3) {
+    return genres;
+  }
+  return [...[...genres].slice(0, 2), ...['Other']];
+}
+
+function onYearOfFilm(film) {
+  const yearOfRelease = film.release_date.split('-');
+  return yearOfRelease;
+}
+
+function posterLinkGenerate(film) {
+  if (film.poster_path !== null) {
+    return `"https://image.tmdb.org/t/p/w500${film.poster_path}"`;
+  }
+  return `"/no-poster.636663e7.jpg"`;
+}
+
+function patternOfCard(film, genres, yearOfRelease) {
+  return `<li id="" class="film-list__item">
   <img
-    src="https://image.tmdb.org/t/p/w500${film.poster_path}"
+    src=${posterLinkGenerate(film)}
     alt="Movie Name"
     class="film-list__item-poster"
     loading="lazy"
@@ -33,8 +65,4 @@ export default function popularFilms(page) {
     </div>
   </div>
 </li>`;
-      })
-      .join('');
-    filmListRef.innerHTML = listOfFilms;
-  });
 }
