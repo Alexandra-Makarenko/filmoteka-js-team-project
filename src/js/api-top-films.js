@@ -3,12 +3,9 @@ import { genresArray } from './array-of-genres';
 // import { genresArray } from './array-of-genres';
 import { createPagination, paginationOptions } from './pagination';
 
-// const page = paginationOptions.startPage;
-
 const topFilms = new ApiTopFilms();
 const filmListRef = document.querySelector('.film_list');
-// popularFilms(1);
-export default function popularFilms(page) {
+export function popularFilms(page) {
   topFilms.fetchTopFilms(page).then(r => {
     const listOfFilms = r.data.results
       .map(film => {
@@ -42,10 +39,9 @@ export default function popularFilms(page) {
     filmListRef.innerHTML = listOfFilms;
     const totalPages = r.data.total_pages;
     const itemsPerPage = r.data.results.length;
-    paginationOptions.startPage = page;
-    console.log(paginationOptions.startPage);
+    // paginationOptions.startPage = page;
+    console.log('api-top-films', page);
     createPagination(page, itemsPerPage, totalPages);
-    console.log(page);
   });
 }
 
