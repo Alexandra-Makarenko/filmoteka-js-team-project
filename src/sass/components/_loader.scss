@@ -17,14 +17,21 @@ $bg: var(--accent-color);
 
 .loader-container {
 position: fixed;
+z-index: 100;
+opacity: 2;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+    
 }
 
 .loader-hiden {
     opacity: 0;
     visibility: hidden;
+    transition: opacity 0.3s, visibility 0s linear 0.3s
 }
 
 .loader-item{
@@ -45,6 +52,7 @@ position: fixed;
     border-bottom-right-radius: $w;
     animation: rotate 1200ms ease-in-out infinite;
     transform-origin: top center;
+    
 }
 
 .loader-item__1 {
