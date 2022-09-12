@@ -10,8 +10,8 @@ import './js/array-of-genres';
 import './js/fetchTopFilms';
 import './js/footer-modal';
 import './js/team-photo';
-import './js/movie-modal';
-import './js/modal-open';
-import './js/modal-close';
+// import './js/movie-modal';
+// import './js/modal-open';
+// import './js/modal-close';
 
 
