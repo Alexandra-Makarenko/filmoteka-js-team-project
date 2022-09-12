@@ -2,7 +2,12 @@
 @import './components/variables';
 @import './components/container';
 @import './components/section';
+@import './components/is-hidden';
+@import './layout/movie-modal';
 @import './components/header';
+@import './movie-cart';
+@import './components/pagination';
 @import './components/footer';
+@import './layout/page-top';
 @import './components/footer-modal';
-// @import './example';
+@import './components/loader';
