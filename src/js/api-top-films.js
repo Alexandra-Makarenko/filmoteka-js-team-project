@@ -1,9 +1,10 @@
 import ApiTopFilms from './fetchTopFilms';
 import { genresArray } from './array-of-genres';
-import { genresArray } from './array-of-genres';
+// import { genresArray } from './array-of-genres';
+import { createPagination, paginationOptions } from './pagination';
+
 const topFilms = new ApiTopFilms();
 const filmListRef = document.querySelector('.film_list');
-// popularFilms(1);
 export default function popularFilms(page) {
   topFilms.fetchTopFilms(page).then(r => {
     const listOfFilms = r.data.results
@@ -12,8 +13,15 @@ export default function popularFilms(page) {
       })
       .join('');
     filmListRef.innerHTML = listOfFilms;
+    const totalPages = r.data.total_pages;
+    const itemsPerPage = r.data.results.length;
+    // paginationOptions.startPage = page;
+    console.log('api-top-films', page);
+    createPagination(page, itemsPerPage, totalPages);
   });
 }
+
+popularFilms(paginationOptions.startPage);
 
 function rendOneCard(film) {
   const genres = decipherGenresIds(film);
@@ -50,7 +58,7 @@ function posterLinkGenerate(film) {
 }
 
 function patternOfCard(film, genres, yearOfRelease) {
-  return `<li id="" class="film-list__item">
+  return `<li film-id="${film.id} class="film-list__item">
   <img
     src=${posterLinkGenerate(film)}
     alt="Movie Name"
