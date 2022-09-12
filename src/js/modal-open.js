@@ -10,9 +10,6 @@ import {
 import { markupModalFilm } from './movie-modal';
 // console.log(markupModalFilm);
 
-const btnClose = document.querySelector('.menu-close-button');
-const movieModal = document.querySelector('.movie-wrapper');
-const backdrop = document.querySelector('.modal-backdrop');
 const gallery = document.querySelector('.film_list');
 const body = document.querySelector('body');
 
