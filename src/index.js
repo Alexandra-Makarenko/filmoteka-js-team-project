@@ -1,3 +1,4 @@
+import "./js/loader";
 import './sass/index.scss';
 import './js/api-key';
 import './js/search';
