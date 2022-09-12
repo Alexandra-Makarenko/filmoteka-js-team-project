@@ -5,7 +5,7 @@ import { createPagination, paginationOptions } from './pagination';
 
 const topFilms = new ApiTopFilms();
 const filmListRef = document.querySelector('.film_list');
-export default function popularFilms(page) {
+export function popularFilms(page) {
   topFilms.fetchTopFilms(page).then(r => {
     const listOfFilms = r.data.results
       .map(film => {
