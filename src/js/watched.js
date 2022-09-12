@@ -4,7 +4,7 @@ import { genresArray } from './array-of-genres';
 
 const refs = {
     btnWatched: document.querySelector('#watched'),
-    filmList: document.querySelector('.film-list'),
+    filmList: document.querySelector('.film_list'),
 }
 refs.btnWatched.addEventListener('click', onWatched)
 
@@ -44,6 +44,7 @@ function popularFilms(page) {
       })
       .join('');
     refs.filmList.insertAdjacentHTML('beforeend', listOfFilms);
+    console.log(listOfFilms)
   });
 }
 
