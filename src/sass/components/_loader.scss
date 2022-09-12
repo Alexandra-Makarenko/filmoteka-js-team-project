@@ -1,0 +1,82 @@
+$width: 240px;
+$height: 240px;
+$bg2: var(--information-color);
+$bg: var(--accent-color);
+
+// html,
+// body {
+//     width: 100%;
+//     height: 100%;
+//     margin: 0;
+//     padding: 0;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     background-color: $bg;
+// }
+
+.loader-container {
+position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader-hiden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-item{
+    width: $width;
+    height: $height;
+}
+
+@mixin semi-circle($w) {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: calc(#{calc($width / 2)} - #{calc($w / 2)});
+    border: calc($width/30) solid $bg;
+    border-top: 0;
+    width: $w;
+    height: calc($w / 2);
+    border-bottom-left-radius: $w;
+    border-bottom-right-radius: $w;
+    animation: rotate 1200ms ease-in-out infinite;
+    transform-origin: top center;
+}
+
+.loader-item__1 {
+    @include semi-circle(calc($width / 6));
+}
+
+.loader-item__2 {
+    @include semi-circle(calc($width/(60/19)));
+    animation-delay: -200ms;
+}
+
+.loader-item__3 {
+    @include semi-circle(calc($width/(15/7)));
+    animation-delay: -400ms;
+}
+
+.loader-item__4 {
+    @include semi-circle(calc($width/(60/37)));
+    animation-delay: -600ms;
+}
+
+.loader-item__5 {
+    @include semi-circle(calc($width/(30/23)));
+    animation-delay: -700ms;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
