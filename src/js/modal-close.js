@@ -1,14 +1,13 @@
 const btnClose = document.querySelector('.menu-close-button');
-const modal = document.querySelector('.movie-popup');
+const modal = document.querySelector('.movie-wrapper');
 const backdrop = document.querySelector('.modal-backdrop');
-const modalMcpContainer = document.querySelector('.modal__data--content');
 const body = document.querySelector('body');
 
 function modalHidden() {
   backdrop.classList.add('hidden');
   body.style.overflow = '';
   removeListener();
-  modalMcpContainer.innerHTML = '';
+  modal.innerHTML = '';
 }
 // закриття модалки кнопкою
 function closeModalBtn() {

@@ -7,12 +7,12 @@ import {
   backdrop,
 } from './modal-close';
 
-import markupModalFilm from './movie-modal';
+import { markupModalFilm } from './movie-modal';
+// console.log(markupModalFilm);
 
 const btnClose = document.querySelector('.menu-close-button');
-const modal = document.querySelector('.movie-popup');
+const modal = document.querySelector('.movie-wrapper');
 const backdrop = document.querySelector('.modal-backdrop');
-const modalMcpContainer = document.querySelector('.modal__data--content');
 const gallery = document.querySelector('.film_list');
 const body = document.querySelector('body');
 
@@ -24,6 +24,7 @@ gallery.addEventListener('click', e => {
     setTimeout(() => {
       modalClose();
     }, 100);
+    modal.insertAdjacentHTML('beforeend', markupModalFilm);
   }
 });
 
