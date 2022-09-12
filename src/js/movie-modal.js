@@ -7,7 +7,7 @@ export const IMG_FILE_SIZE = 'w500';
 
 const refs = {
   btnClose: document.querySelector('.menu-close-button'),
-  modal: document.querySelector('.movie-wrapper'),
+  movieModal: document.querySelector('.movie-wrapper'),
   backdrop: document.querySelector('.modal-backdrop'),
   gallery: document.querySelector('.film_list'),
   body: document.querySelector('body'),
