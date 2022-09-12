@@ -1,6 +1,4 @@
-import ApiTopFilms from './fetchTopFilms';
-import { genresArray } from './array-of-genres';
-
+import { API_KEY } from './api-key';
 
 const refs = {
     btnWatched: document.querySelector('#watched'),
@@ -8,25 +6,26 @@ const refs = {
 }
 refs.btnWatched.addEventListener('click', onWatched)
 
-function onWatched() {
-    const topFilms = new ApiTopFilms();
 
-popularFilms(1);
-function popularFilms(page) {
-  topFilms.fetchTopFilms(page).then(r => {
-    const listOfFilms = r.data.results
-      .map(film => {
-        const genres = genresArray
-          .filter(genre => {
-            for (const id of film.genre_ids) {
-              if (id === genre.id) {
-                return genre.name;
-              }
-            }
-          })
-          .map(genre => genre.name);
-        const yearOfRelease = film.release_date.split('-');
-        return `<li id="" class="film-list__item">
+const fetchWatchedFilms = async (id) => {
+  const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`);
+  const films = await response.json();
+  return films;
+};
+
+
+function onWatched() {
+  // let watched = localStorage.getItem('watched');
+  let watched = [75780,3716,150,13,10000]
+  
+  if (!watched) {
+      refs.filmList.innerHTML = '<p>Sorry, list is empty(</p>'
+  } 
+  console.log(localStorage.getItem('watched'));
+  watched.map(film => fetchWatchedFilms(film).then(film => 
+  {
+     const yearOfRelease = film.release_date.split('-');
+    refs.filmList.insertAdjacentHTML("beforeend",`<li id="" class="film-list__item">
   <img
     src="https://image.tmdb.org/t/p/w500${film.poster_path}"
     alt="Movie Name"
@@ -35,17 +34,16 @@ function popularFilms(page) {
   />
   <div class="film-list__item-info">
     <h3 class="film-list__item-title">${film.title}</h3>
-    <div class="film-list__item-details">
-      <span class="film-list__item-genres">${genres.join(', ')}</span>|
-      <span class="film-list__item-year">${yearOfRelease[0]}</span>
-    </div>
+   <span class="film-list__item-genres">жанри</span>
+   <span class="film-list__item-genres">${yearOfRelease[0]}</span>
+    <span class="film-list__item-rate">${film.vote_average}</span>
   </div>
-</li>`;
-      })
-      .join('');
-    refs.filmList.insertAdjacentHTML('beforeend', listOfFilms);
-    console.log(listOfFilms)
-  });
+</li>`)
+  }
+  ) )
+
+  refs.filmList.innerHTML = '';
+ 
 }
 
-}
+
