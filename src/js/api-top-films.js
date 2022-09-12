@@ -22,7 +22,7 @@ export default function popularFilms(page) {
           })
           .map(genre => genre.name);
         const yearOfRelease = film.release_date.split('-');
-        return `<li id="" class="film-list__item">
+        return `<li film-id="${film.id} class="film-list__item">
   <img
     src="https://image.tmdb.org/t/p/w500${film.poster_path}"
     alt="Movie Name"
