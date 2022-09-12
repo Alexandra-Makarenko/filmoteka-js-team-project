@@ -24,7 +24,7 @@ gallery.addEventListener('click', e => {
     setTimeout(() => {
       modalClose();
     }, 100);
-    modal.insertAdjacentHTML('beforeend', markupModalFilm);
+    modal.insertAdjacentHTML('beforeend', markupModalFilm());
   }
 });
 

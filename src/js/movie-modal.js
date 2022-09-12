@@ -24,18 +24,18 @@ const refs = {
 
 export function markupModalFilm() {
   return `<div class="poster-img">
-          <img id='modal-img' src="" alt="film" />
-        </div>
-        <div class="movie-info">
-          <h1 class="movie-title"></h1>
-          <table class="details-wrapper">
-        <ul class="movie-details">
+        <img src="" alt="poster" />
+      </div>
+
+      <div class="movie-info">
+        <h3 class="movie-title"></h3>
+        <div class="details-wrapper">
+          <ul class="movie-details">
             <li class="movie-details--item">Vote / Votes</li>
             <li class="movie-details--item">Popularity</li>
             <li class="movie-details--item">Original Title</li>
             <li class="movie-details--item">Genre</li>
           </ul>
-
           <ul class="movie-details--data">
             <li class="movie-details--data-item">
               <span class="vote"></span> / <span class="votes"></span>
@@ -44,22 +44,17 @@ export function markupModalFilm() {
             <li class="movie-details--data-item original-title"></li>
             <li class="movie-details--data-item genre"></li>
           </ul>
-      </div>
-
-          <div class="modal__data--about">
-
-          <h3 class="movie-description">About</h3>
+        </div>
+        <h3 class="movie-description">About</h3>
         <p class="movie-description__text">
         </p>
-
-          
-            </div>
-          </div>
-        <ul class="movie-popup__buttons">
-          <li class="movie-popup__button--accent" type="button">
-            add to Watched
-          </li>
-          <li class="movie-popup__button" type="button">add to queue</li>
-        </ul>
-        </div>`;
+        <div class="movie-popup__buttons">
+        <button type="button" class="movie-info__button--watched">
+          add to Watched
+        </button>
+        <button type="button" class="movie-info__button--queued">
+          add to queue
+        </button>
+        </div>
+      </div>;`;
 }
