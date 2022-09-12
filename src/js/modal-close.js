@@ -1,5 +1,5 @@
 const btnClose = document.querySelector('.menu-close-button');
-const modal = document.querySelector('.movie-wrapper');
+const movieModal = document.querySelector('.movie-wrapper');
 const backdrop = document.querySelector('.modal-backdrop');
 const body = document.querySelector('body');
 
@@ -7,7 +7,7 @@ function modalHidden() {
   backdrop.classList.add('hidden');
   body.style.overflow = '';
   removeListener();
-  modal.innerHTML = '';
+  movieModal.innerHTML = '';
 }
 // закриття модалки кнопкою
 function closeModalBtn() {
@@ -41,7 +41,9 @@ export {
   closeModalBtn,
   closeModalEscape,
   closeModalClick,
-  modal,
+  movieModal,
   btnClose,
   backdrop,
 };
+
+//

@@ -2,7 +2,7 @@ import {
   closeModalBtn,
   closeModalEscape,
   closeModalClick,
-  modal,
+  movieModal,
   btnClose,
   backdrop,
 } from './modal-close';
@@ -10,21 +10,18 @@ import {
 import { markupModalFilm } from './movie-modal';
 // console.log(markupModalFilm);
 
-const btnClose = document.querySelector('.menu-close-button');
-const modal = document.querySelector('.movie-wrapper');
-const backdrop = document.querySelector('.modal-backdrop');
 const gallery = document.querySelector('.film_list');
 const body = document.querySelector('body');
 
 // вішаємо слухача для відкриття модалки з повною інформацією про фільм
 gallery.addEventListener('click', e => {
-  if (e.target.closest('.film-list__item')) {
+  if (e.target.closest('.film-list__item-poster')) {
     body.style.overflow = 'hidden';
     modalVisible();
     setTimeout(() => {
       modalClose();
     }, 100);
-    modal.insertAdjacentHTML('beforeend', markupModalFilm());
+    movieModal.insertAdjacentHTML('beforeend', markupModalFilm());
   }
 });
 

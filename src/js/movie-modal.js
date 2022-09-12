@@ -5,14 +5,6 @@ import axios from 'axios';
 export const IMG_BASE_URL = 'https://image.tmdb.org/t/p/'; // Base URL to get movies dates
 export const IMG_FILE_SIZE = 'w500';
 
-const refs = {
-  btnClose: document.querySelector('.menu-close-button'),
-  modal: document.querySelector('.movie-wrapper'),
-  backdrop: document.querySelector('.modal-backdrop'),
-  gallery: document.querySelector('.film_list'),
-  body: document.querySelector('body'),
-};
-
 // export async function fetchMovieById(id) {
 //   const url = `https://api.themoviedb.org/3/movie/${id}`;
 //   const parmams = {
