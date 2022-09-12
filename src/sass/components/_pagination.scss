@@ -12,6 +12,15 @@
 // .tui-ico-prev {
 //   overflow: hidden;
 // }
+.tui-page-btn.tui-prev.hide-prev,
+.tui-page-btn.tui-first.tui-is-disabled,
+.tui-page-btn.tui-next.hide-next,
+.tui-page-btn.tui-last.tui-is-disabled,
+.tui-page-btn.tui-next-is-ellip.change-next,
+.tui-page-btn.tui-prev-is-ellip.change-prev {
+  display: none;
+}
+
 .tui-pagination .tui-ico-ellip,
 .tui-pagination .tui-ico-first,
 .tui-pagination .tui-ico-last {

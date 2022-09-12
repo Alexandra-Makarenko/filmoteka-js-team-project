@@ -16,7 +16,7 @@ const dotsIcon = `${iconPagination}#icon-dots`;
 
 export const createPagination = () => {
   const options = {
-    totalItems: 50,
+    totalItems: 0,
     itemsPerPage: 20,
     visiblePages: 5,
     page: 1,
