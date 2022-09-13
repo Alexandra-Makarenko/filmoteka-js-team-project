@@ -1,0 +1,31 @@
+.section-library{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.library-message{
+    display: block;
+    text-align: center;
+    color: var(--second-color);
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+}
+
+.library-message-hidden{
+    display: none;
+}
+
+.tui-list-of-films{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.library_list {
+    margin: 20px 0;
+  }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,12 +28,31 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
+  <body class="scrollar-viewport">
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/header.html"></include>
-    <main></main>
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/footer-modal.html"></include>
+    <include src="./partials/loader.html"></include>
+    <include src="./partials/header-home.html"></include>
+
+    <main>
+      <include src="./partials/movie-cart.html"></include>
+      <!-- <include src="./partials/film-section.html"></include> -->
+
+      <include src="./partials/pagination.html"></include>
+      <include src="./partials/btn-to-top.html"></include>
+      <include src="./partials/footer.html"></include>
+      <include src="./partials/movie-modal.html"></include>
+      <include src="./partials/footer-modal.html"></include>
+    </main>
+
     <script type="module" src="./index.js"></script>
+    <!-- <script type="module" src="./js/search.js"></script>
+    <script src="./js/api-top-films.js" type="module"></script>
+    <script type="module" src="./js/pagination.js"></script> -->
+
+    <!-- <script type="module" src="./js/footer-modal.js"></script>
+    <script type="module" src="./js/team-photo.js"></script>-->
+    <!-- <script type="module" src="./js/movie-modal.js"></script>
+    <script type="module" src="./js/modal-open.js"></script>
+    <script type="module" src="./js/modal-close.js"></script> -->
   </body>
 </html>

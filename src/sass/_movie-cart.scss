@@ -1,0 +1,124 @@
+.film-list__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--bg-color);
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    -23px 0 20px -23px rgba(0, 0, 0, 0.6), 23px 0 20px -23px rgba(0, 0, 0, 0.6),
+    inset 0 0 40px rgba(0, 0, 0, 0.1);
+  transition: scale 250ms linear, box-shadow 250ms linear;
+  cursor: pointer;
+  
+}
+
+
+
+//MOBILE
+@media screen and (max-width: 767px) {
+  .film-list__item:not(:last-child) {
+    margin-bottom: 20px;
+  .film-list__item:nth-child(1){
+    margin-top: 20px;
+}
+  }
+}
+
+//TABLET
+@media screen and (min-width: 768px) {
+  .film_list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    justify-content: center;
+  }
+
+  .film-list__item-poster {
+    margin-bottom: 8px;
+  }
+}
+
+// DESKTOP
+@media screen and (min-width: 1024px) {
+  .film_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 32px;
+    column-gap: 16px;
+    justify-content: center;
+  }
+
+  .film-list__item-poster {
+    margin-bottom: 12px;
+  }
+}
+
+.film-list__item:hover,
+.film-list__item:focus {
+  // scale: 1.006;
+  transform: scale(1.03);
+  transition: transform ease-in-out 150ms;
+}
+
+.film-list__item-info{
+  margin-top: 8px;
+  padding: 0 10px 5px;
+}
+
+.film-list__item-title {
+  display: block;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+  text-transform: uppercase;
+  color: var(--second-color);
+  @media screen and (min-width: $desktop) {
+      font-size: 20px;
+      line-height: calc(24 / 20);
+    }
+}
+
+.film-list__item-strip,
+.film-list__item-year,
+.film-list__item-genres{
+  font-size: 12px;
+  line-height: calc(16 / 12);
+  color: var(--accent-color);
+  @media screen and (min-width: $desktop) {
+    font-size: 20px;
+    line-height: calc(24 / 20);
+  }
+}
+
+.film-list__item-strip,
+.film-list__item-year{
+  margin-left: 5px;
+}
+
+.film-list__item-rate{
+  width: 36px;
+  height: 16px;
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+  color: var(--main-color);
+  background-color: var(--accent-color);
+  margin-left: 5px;
+  text-align: center;
+  @media screen and (min-width: 1280px) {
+  width: 40px;
+  height: 20px;
+  
+  }
+}
+
+.film-list__item-poster {
+  border-radius: 5px;
+  margin-bottom: 12px;
+  //   width: 395px;
+  //   height: 574px;
+}
+
+.film-list__item-details{
+  display: flex;
+  align-items: center;
+}
