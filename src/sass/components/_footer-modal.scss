@@ -19,7 +19,7 @@
 .modal {
   width: 450px;
   min-height: 482px;
-  background-color: var(--main-color);
+  background-color: var(--footer-bg-color);
 
   @media screen and (max-width: $pre-tablet) {
     width: 100%;
@@ -85,10 +85,16 @@
     object-fit: cover;
   }
 }
+
 .wrap-team {
   @media screen and (max-width: $pre-tablet) {
     overflow: scroll;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
+
   @media screen and (min-width: $tablet) {
     display: flex;
     flex-wrap: wrap;
@@ -178,7 +184,11 @@
   background: var(--footer-text-color);
   transform: rotateY(180deg);
   padding: 10px;
-  background: linear-gradient(45deg, #2a0018, #362e29, #020240) 0 0/200% 200%;
+  background: linear-gradient(45deg, #2a0018, #362e29, #020240) 0 0/100% 100%;
+}
+
+.current-back {
+  padding: 0;
 }
 
 .team-member-name {
@@ -187,6 +197,11 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
+
+  @media screen and (max-width: $pre-desktop) {
+    font-size: 14px;
+    line-height: 18px;
+  }
 }
 
 .position-team {
@@ -197,6 +212,11 @@
   line-height: 16px;
 
   margin-top: 5px;
+
+  @media screen and (max-width: $pre-desktop) {
+    font-size: 12px;
+    line-height: 14px;
+  }
 }
 
 .team-work-text {
@@ -204,8 +224,13 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 10px;
+  line-height: 12px;
 
   margin-top: 20px;
+
+  @media screen and (max-width: $pre-desktop) {
+    font-size: 8px;
+    line-height: 10px;
+  }
 }
