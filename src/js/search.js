@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const BASE_URL = 'https://api.themoviedb.org/3/'; // нужно вынести ее в отдельный файл чтоб все могли экспортировать
 const searchQuery = document.querySelector('.search__input');
+const formSearch = document.querySelector('.header__search');
 
 let userSearchData = '';
 
@@ -33,14 +34,13 @@ const handleSearchSubmit = async event => {
       const yearOfRelease = film.release_date.split('-');
          filmList.insertAdjacentHTML("beforeend",`<div film-id="${film.id}" class="film-list__item">
   <img
-    src=${posterLinkGenerate(film)}
+    src="${film.poster_path}"
     alt="Movie Name"
     class="film-list__item-poster"
     loading="lazy"
   />
   <div class="film-list__item-info">
     <h3 class="film-list__item-title">${film.title}</h3>
-   <span class="film-list__item-genres">${genres.join(', ')}</span>
    <span class="film-list__item-year">| ${yearOfRelease[0]}</span>
     <span class="film-list__item-rate">&nbsp;${film.vote_average}&nbsp;</span>
     </div>
@@ -52,4 +52,4 @@ const handleSearchSubmit = async event => {
   }
 };
 
-searchQuery.addEventListener('change', handleSearchSubmit);
+formSearch.addEventListener('submit', handleSearchSubmit);
