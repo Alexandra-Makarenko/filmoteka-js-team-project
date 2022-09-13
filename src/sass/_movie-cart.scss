@@ -11,14 +11,15 @@
   
 }
 
-.film-list__item:nth-child(1){
-  margin-top: 20px;
-}
+
 
 //MOBILE
 @media screen and (max-width: 767px) {
   .film-list__item:not(:last-child) {
     margin-bottom: 20px;
+  .film-list__item:nth-child(1){
+    margin-top: 20px;
+}
   }
 }
 
