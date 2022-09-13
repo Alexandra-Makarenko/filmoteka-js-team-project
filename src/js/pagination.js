@@ -1,24 +1,27 @@
 import Pagination from 'tui-pagination';
-import popularFilms from './api-top-films';
+import { popularFilms } from './api-top-films';
+import { searchPages } from './search';
+import { pageUp } from './page-up';
 // import 'tui-pagination/dist/tui-pagination.css';
-import iconPagination from '/src/images/svg/pagination.svg';
+// import iconPagination from '/src/images/svg/pagination.svg';
 
-const arrowIcon = `${iconPagination}#icon-arrow-start`;
-const dotsIcon = `${iconPagination}#icon-dots`;
+// const arrowIcon = `${iconPagination}#icon-arrow-start`;
+// const dotsIcon = `${iconPagination}#icon-dots`;
 
-// export const paginationSettings = {
-//   startPage: 1,
-//   searchType: null,
-//   pagination: null,
-//   totalItemsHome: null,
-// };
+export const paginationInit = {
+  startPage: 1,
+  searchType: '',
+  pagination: null,
+  // totalItemsHome: null,
+};
 
-export const createPagination = () => {
+export const createPagination = (page, itemsPerPage, totalItems) => {
+  // console.log(page, itemsPerPage, totalItems);
   const options = {
-    totalItems: 50,
-    itemsPerPage: 20,
+    totalItems,
+    itemsPerPage,
     visiblePages: 5,
-    page: 1,
+    page,
     centerAlign: false,
     template: {
       page: '<a href="#" class="tui-page-btn">{{page}}</a>',
@@ -39,13 +42,20 @@ export const createPagination = () => {
     },
   };
   const pagination = new Pagination('pagination', options);
-  popularFilms(options.page);
-  pagination.reset(400);
+  paginationInit.pagination = pagination;
+  // paginationSettings.pagination.reset(totalItems);
+  // pagination.reset(totalItems);
+
   pagination.on('afterMove', async event => {
     const currentPage = event.page;
-    popularFilms(currentPage);
-    // console.log(currentPage);
+    if (paginationInit.searchType === 'popular films') {
+      popularFilms(currentPage);
+      pageUp();
+    }
+    if (paginationInit.searchType === 'search films') {
+      searchPages(currentPage);
+      pageUp();
+    }
   });
+  return pagination;
 };
-
-createPagination();

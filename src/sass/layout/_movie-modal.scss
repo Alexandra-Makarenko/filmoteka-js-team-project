@@ -67,11 +67,13 @@
 
   @media screen and (min-width: $tablet) {
     min-width: 264px;
+    min-height: 374px;
     margin-right: 68px;
   }
 
   @media screen and (min-width: $desktop) {
     min-width: 375px;
+    min-height: 478px;
     margin-right: 16px;
   }
 }
@@ -95,10 +97,14 @@
 }
 
 .movie-details {
-  margin-right: 40px;
+  width: 108px;
+}
+
+.movie-details--data {
+  margin-left: 40px;
 
   @media screen and (min-width: $desktop) {
-    margin-right: 84px;
+    margin-left: 84px;
   }
 }
 
@@ -173,8 +179,8 @@
   }
 }
 
-.movie-popup__button,
-.movie-popup__button--accent {
+.movie-info__button--queued,
+.movie-info__button--watched {
   border-radius: 5px;
   font-size: 12px;
   line-height: 1.33;
@@ -189,7 +195,7 @@
   cursor: pointer;
 }
 
-.movie-popup__button {
+.movie-info__button--queued {
   color: var(--second-color);
   background-color: transparent;
   border: 1px solid var(--second-color);
@@ -208,7 +214,7 @@
     padding: 10px 14px;
   }
 }
-.movie-popup__button--accent {
+.movie-info__button--watched {
   color: var(--main-color);
   background-color: var(--accent-color);
   border: 1px solid var(--accent-color);
