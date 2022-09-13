@@ -177,6 +177,7 @@
 .card__face--back {
   background: var(--footer-text-color);
   transform: rotateY(180deg);
+  padding: 10px;
 }
 
 .team-member-name {
@@ -193,12 +194,17 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
+
+  margin-top: 5px;
 }
 
 .team-work-text {
+  text-align: center;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
+
+  margin-top: 20px;
 }
