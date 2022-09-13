@@ -71,7 +71,7 @@
   text-transform: uppercase;
   color: var(--second-color);
 }
-
+.film-list__item-strip,
 .film-list__item-year,
 .film-list__item-genres{
   font-weight: 500;
@@ -79,6 +79,7 @@
   color: var(--accent-color);
 }
 
+.film-list__item-strip,
 .film-list__item-year{
   margin-left: 5px;
 }

@@ -105,7 +105,7 @@ export async function patternOfCard(film, genres, yearOfRelease) {
   return `<li film-id="${film.id}" class="film-list__item">
   <img
     src=${posterLinkGenerate(film)}
-    alt="Movie Name"
+    alt="${film.title}"
     class="film-list__item-poster"
     film-id="${film.id}"
     loading="lazy"
@@ -113,11 +113,11 @@ export async function patternOfCard(film, genres, yearOfRelease) {
   <div class="film-list__item-info">
     <h3 class="film-list__item-title">${film.title}</h3>
     <div class="film-list__item-details">
-      <span class="film-list__item-genres">${asyncGenres.join(', ')}</span>|
+      <span class="film-list__item-genres">${asyncGenres.join(', ')}</span>
+      <span class="film-list__item-strip">|</span>
       <span class="film-list__item-year">${yearOfRelease[0]}</span>
-      <span class="film-list__item-rate">&nbsp;${Math.round(
-        film.vote_average
-      )}&nbsp;</span>
+      <span class="film-list__item-rate">&nbsp;${(
+        film.vote_average).toFixed(1)}&nbsp;</span>
     </div>
   </div>
 </li>`;
