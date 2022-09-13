@@ -13,3 +13,4 @@ import './js/team-photo';
 import './js/movie-modal';
 import './js/modal-open';
 import './js/modal-close';
+import './js/api-genres';
