@@ -63,6 +63,7 @@ function patternOfCard(film, genres, yearOfRelease) {
     src=${posterLinkGenerate(film)}
     alt="Movie Name"
     class="film-list__item-poster"
+    film-id="${film.id}"
     loading="lazy"
   />
   <div class="film-list__item-info">
