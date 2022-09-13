@@ -114,7 +114,9 @@ async function patternOfCard(film, genres, yearOfRelease) {
     <div class="film-list__item-details">
       <span class="film-list__item-genres">${asyncGenres.join(', ')}</span>|
       <span class="film-list__item-year">${yearOfRelease[0]}</span>
-      <span class="film-list__item-rate">&nbsp;${film.vote_average}&nbsp;</span>
+      <span class="film-list__item-rate">&nbsp;${Math.round(
+        film.vote_average
+      )}&nbsp;</span>
     </div>
   </div>
 </li>`;
