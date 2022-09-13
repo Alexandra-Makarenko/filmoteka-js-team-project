@@ -102,7 +102,7 @@ function posterLinkGenerate(film) {
 
 async function patternOfCard(film, genres, yearOfRelease) {
   const asyncGenres = await genres.then(r => r);
-  return `<li film-id="${film.id} class="film-list__item">
+  return `<li film-id="${film.id}" class="film-list__item">
   <img
     src=${posterLinkGenerate(film)}
     alt="Movie Name"
@@ -114,6 +114,7 @@ async function patternOfCard(film, genres, yearOfRelease) {
     <div class="film-list__item-details">
       <span class="film-list__item-genres">${asyncGenres.join(', ')}</span>|
       <span class="film-list__item-year">${yearOfRelease[0]}</span>
+      <span class="film-list__item-rate">&nbsp;${film.vote_average}&nbsp;</span>
     </div>
   </div>
 </li>`;
