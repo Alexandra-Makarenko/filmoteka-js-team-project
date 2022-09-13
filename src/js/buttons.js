@@ -26,7 +26,14 @@ const fetchQueueFilms = async (id) => {
   const response = await fetch(`${baseURL}${id}?api_key=${API_KEY}`);
   const films = await response.json();
   return films;
-  };
+};
+  
+function posterLinkGenerate(film) {
+  if (film.poster_path !== null) {
+    return `"https://image.tmdb.org/t/p/w500${film.poster_path}"`;
+  }
+  return `"https://raw.githubusercontent.com/Alexandra-Makarenko/filmoteka-js-team-project/main/src/images/no-poster.jpg"`;
+}
 
 function onBtnQueue() {
   // hideMessage();
@@ -39,7 +46,7 @@ function onBtnQueue() {
     const yearOfRelease = film.release_date.split('-');
     refs.filmList.insertAdjacentHTML("beforeend",`<li id="" class="film-list__item">
     <img
-    src="https://image.tmdb.org/t/p/w500${film.poster_path}"
+    src=${posterLinkGenerate(film)}
     alt="Movie Name"
     class="film-list__item-poster"
     loading="lazy"
@@ -80,7 +87,7 @@ function onBtnWatched() {
     const yearOfRelease = film.release_date.split('-');
     refs.filmList.insertAdjacentHTML("beforeend",`<li id="" class="film-list__item">
     <img
-    src="https://image.tmdb.org/t/p/w500${film.poster_path}"
+    src=${posterLinkGenerate(film)}
     alt="Movie Name"
     class="film-list__item-poster"
     loading="lazy"
