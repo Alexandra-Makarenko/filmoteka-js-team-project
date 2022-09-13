@@ -4,6 +4,7 @@ import Notiflix from 'notiflix';
 import { API_KEY } from './api-key';
 import axios from 'axios';
 import { rendOneCard } from './api-top-films';
+import { offLoader, onLoader } from "../js/loader";
 const BASE_URL = 'https://api.themoviedb.org/3/'; // нужно вынести ее в отдельный файл чтоб все могли экспортировать
 const searchQuery = document.querySelector('.search__input');
 const formSearch = document.querySelector('.header__search');
@@ -30,11 +31,13 @@ const handleSearchSubmit = async event => {
 };
 
 async function searchPages(page) {
+  onLoader();
   const urlFilmSearch = await createUrlFilmSearch(page);
   const response = await axios.get(urlFilmSearch);
   const { data } = response;
   if (data.results.length === 0) {
     Notiflix.Notify.failure('Error! Search does not give result');
+    offLoader();
     return;
   }
   Notiflix.Notify.success('Success search');
@@ -42,6 +45,7 @@ async function searchPages(page) {
   await data.results.map(film => {
     rendOneCard(film).then(r => {
       filmList.insertAdjacentHTML('beforeend', r);
+      offLoader();
     });
   });
 }
