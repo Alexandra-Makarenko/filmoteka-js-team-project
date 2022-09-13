@@ -39,7 +39,7 @@ function posterLinkGenerate(film) {
 }
 
 function onBtnQueue() {
-  // hideMessage();
+  hideMessage();
   refs.filmList.innerHTML = '';
   if (!savedQueueFilms) {
     refs.filmList.innerHTML = '<p>Sorry, list is empty(</p>';
@@ -136,12 +136,12 @@ async function patternOfCard(film, genres, yearOfRelease) {
 }
 
 //заховати повідомлення "будь ласка, оберіть категорію"
-// function hideMessage(){
-//   if(refs.text.classList.contains("library-message")){
-//     refs.text.classList.remove('library-message')
-//     refs.text.classList.add('library-message-hidden')
-//   }
-// }
+function hideMessage(){
+  if(refs.text.classList.contains("library-message")){
+    refs.text.classList.remove('library-message')
+    refs.text.classList.add('library-message-hidden')
+  }
+}
 
 const fetchWatchedFilms = async idw => {
   const response = await fetch(
@@ -152,7 +152,7 @@ const fetchWatchedFilms = async idw => {
 };
 
 function onBtnWatched() {
-  // hideMessage();
+  hideMessage();
   refs.filmList.innerHTML = '';
   if (!savedWatchedFilms) {
     refs.filmList.innerHTML = '<p>Sorry, list is empty(</p>';
