@@ -5,6 +5,7 @@ import { API_KEY } from './api-key';
 import axios from 'axios';
 import { createPagination, paginationInit } from './pagination';
 import { rendOneCard } from './api-top-films';
+import { offLoader, onLoader } from "../js/loader";
 
 const BASE_URL = 'https://api.themoviedb.org/3/'; // нужно вынести ее в отдельный файл чтоб все могли экспортировать
 const searchQuery = document.querySelector('.search__input');
@@ -32,11 +33,13 @@ const handleSearchSubmit = async event => {
 };
 
 export async function searchPages(page) {
+  onLoader();
   const urlFilmSearch = await createUrlFilmSearch(page);
   const response = await axios.get(urlFilmSearch);
   const { data } = response;
   if (data.results.length === 0) {
     Notiflix.Notify.failure('Error! Search does not give result');
+    offLoader();
     return;
   }
   Notiflix.Notify.success('Success search');

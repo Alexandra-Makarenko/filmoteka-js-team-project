@@ -1,5 +1,6 @@
 import { API_KEY } from './api-key';
 import { arrayOfGenres } from './array-of-genres';
+import { offLoader, onLoader } from "../js/loader";
 //заглушка айдішніків поки нема локального збереження
 const id = [716037, 632639, 561743, 860741, 862504]; //заглушка для черги
 const idw = [16037, 532630, 617430, 760412, 76504]; //заглушка для переглянутого
@@ -39,16 +40,19 @@ function posterLinkGenerate(film) {
 }
 
 function onBtnQueue() {
+  onLoader();
   hideMessage();
   refs.filmList.innerHTML = '';
   if (!savedQueueFilms) {
     refs.filmList.innerHTML = '<p>Sorry, list is empty(</p>';
+    offLoader();
   }
 
   savedQueueFilms.map(film =>
     fetchQueueFilms(film).then(film => {
       rendOneCard(film).then(r => {
         refs.filmList.insertAdjacentHTML('beforeend', r);
+        offLoader();
       });
     })
   );
@@ -152,15 +156,18 @@ const fetchWatchedFilms = async idw => {
 };
 
 function onBtnWatched() {
+  onLoader();
   hideMessage();
   refs.filmList.innerHTML = '';
   if (!savedWatchedFilms) {
     refs.filmList.innerHTML = '<p>Sorry, list is empty(</p>';
+    offLoader();
   }
   savedWatchedFilms.map(film =>
     fetchWatchedFilms(film).then(film => {
       rendOneCard(film).then(r => {
         refs.filmList.insertAdjacentHTML('beforeend', r);
+        offLoader();
       });
     })
   );
