@@ -1,18 +1,14 @@
 import ApiTopFilms from './fetchTopFilms';
-import { genresArray } from './array-of-genres';
-// import { genresArray } from './array-of-genres';
+import { arrayOfGenres } from './array-of-genres';
 import { createPagination, paginationOptions } from './pagination';
-
+import { onFetchGenres } from './api-genres';
 const topFilms = new ApiTopFilms();
 const filmListRef = document.querySelector('.film_list');
+
 export function popularFilms(page) {
   topFilms.fetchTopFilms(page).then(r => {
-    const listOfFilms = r.data.results
-      .map(film => {
-        return rendOneCard(film);
-      })
-      .join('');
-    filmListRef.innerHTML = listOfFilms;
+    filmListRef.innerHTML = '';
+    generateListOfFilms(r);
     const totalPages = r.data.total_pages;
     const itemsPerPage = r.data.results.length;
     // paginationOptions.startPage = page;
@@ -23,6 +19,18 @@ export function popularFilms(page) {
 
 popularFilms(paginationOptions.startPage);
 
+async function generateListOfFilms(r) {
+  const listOfFilms = r.data.results.map(film => {
+    return rendOneCard(film);
+  });
+  const arrayOfCard = await listOfFilms.map(film =>
+    film.then(r => {
+      filmListRef.insertAdjacentHTML('beforeend', r);
+    })
+  );
+  // return arrayOfCard;
+}
+
 function rendOneCard(film) {
   const genres = decipherGenresIds(film);
   const yearOfRelease = onYearOfFilm(film);
@@ -30,19 +38,58 @@ function rendOneCard(film) {
 }
 
 function decipherGenresIds(film) {
-  const genres = genresArray
-    .filter(genre => {
-      for (const id of film.genre_ids) {
-        if (id === genre.id) {
-          return genre.name;
-        }
-      }
+  return arrayOfGenres
+    .then(r => {
+      return r
+        .filter(genre => {
+          for (const id of film.genre_ids) {
+            if (id === genre.id) {
+              return genre.name;
+            }
+          }
+        })
+        .map(genre => genre.name);
     })
-    .map(genre => genre.name);
-  if (genres.length < 3) {
-    return genres;
-  }
-  return [...[...genres].slice(0, 2), ...['Other']];
+    .then(r => {
+      if (r.length < 3) {
+        return r;
+      }
+      return [...[...r].slice(0, 2), ...['Other']];
+    });
+
+  // const fullArrayOfGenres = arrayOfGenres.then(r => {
+  //   return r
+  //     .filter(genre => {
+  //       for (const id of film.genre_ids) {
+  //         if (id === genre.id) {
+  //           return genre.name;
+  //         }
+  //       }
+  //     })
+  //     .map(genre => genre.name);
+  // });
+  // const shortArrayOfGenres = fullArrayOfGenres.then(r => {
+  //   if (r.length < 3) {
+  //     return r;
+  //   }
+  //   return [...[...r].slice(0, 2), ...['Other']];
+  // });
+  // return shortArrayOfGenres;
+
+  // const genresArray = arrayOfGenres.then(r => r);
+  // const genres = genresArray
+  //   .filter(genre => {
+  //     for (const id of film.genre_ids) {
+  //       if (id === genre.id) {
+  //         return genre.name;
+  //       }
+  //     }
+  //   })
+  //   .map(genre => genre.name);
+  // if (genres.length < 3) {
+  //   return genres;
+  // }
+  // return [...[...genres].slice(0, 2), ...['Other']];
 }
 
 function onYearOfFilm(film) {
@@ -57,7 +104,8 @@ function posterLinkGenerate(film) {
   return `"/no-poster.636663e7.jpg"`;
 }
 
-function patternOfCard(film, genres, yearOfRelease) {
+async function patternOfCard(film, genres, yearOfRelease) {
+  const asyncGenres = await genres.then(r => r);
   return `<li film-id="${film.id} class="film-list__item">
   <img
     src=${posterLinkGenerate(film)}
@@ -68,7 +116,7 @@ function patternOfCard(film, genres, yearOfRelease) {
   <div class="film-list__item-info">
     <h3 class="film-list__item-title">${film.title}</h3>
     <div class="film-list__item-details">
-      <span class="film-list__item-genres">${genres.join(', ')}</span>|
+      <span class="film-list__item-genres">${asyncGenres.join(', ')}</span>|
       <span class="film-list__item-year">${yearOfRelease[0]}</span>
     </div>
   </div>
