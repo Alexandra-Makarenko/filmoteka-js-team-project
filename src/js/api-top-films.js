@@ -27,13 +27,13 @@ async function generateListOfFilms(r) {
   });
 }
 
-function rendOneCard(film) {
+export function rendOneCard(film) {
   const genres = decipherGenresIds(film);
   const yearOfRelease = onYearOfFilm(film);
   return patternOfCard(film, genres, yearOfRelease);
 }
 
-function decipherGenresIds(film) {
+export function decipherGenresIds(film) {
   return arrayOfGenres
     .then(r => {
       return r
@@ -100,7 +100,7 @@ function posterLinkGenerate(film) {
   return `"/no-poster.636663e7.jpg"`;
 }
 
-async function patternOfCard(film, genres, yearOfRelease) {
+export async function patternOfCard(film, genres, yearOfRelease) {
   const asyncGenres = await genres.then(r => r);
   return `<li film-id="${film.id}" class="film-list__item">
   <img
