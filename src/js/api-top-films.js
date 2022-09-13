@@ -20,15 +20,11 @@ export function popularFilms(page) {
 popularFilms(paginationOptions.startPage);
 
 async function generateListOfFilms(r) {
-  const listOfFilms = r.data.results.map(film => {
-    return rendOneCard(film);
-  });
-  const arrayOfCard = await listOfFilms.map(film =>
-    film.then(r => {
+  const listOfFilms = await r.data.results.map(film => {
+    rendOneCard(film).then(r => {
       filmListRef.insertAdjacentHTML('beforeend', r);
-    })
-  );
-  // return arrayOfCard;
+    });
+  });
 }
 
 function rendOneCard(film) {
