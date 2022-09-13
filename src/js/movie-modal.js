@@ -2,7 +2,7 @@ import ApiTopFilms from './fetchTopFilms';
 import axios from 'axios';
 import { movieModal } from './modal-close';
 import { Notify } from 'notiflix';
-import { arrayOfGanres} from './array-of-ganres'
+import { arrayOfGanres} from './array-of-genres'
 
 export const IMG_BASE_URL = 'https://image.tmdb.org/t/p/'; // Base URL to get movies dates
 export const IMG_FILE_SIZE = 'w500';
