@@ -47,15 +47,17 @@ function onBtnQueue() {
     refs.filmList.insertAdjacentHTML("beforeend",`<li id="" class="film-list__item">
     <img
     src=${posterLinkGenerate(film)}
-    alt="Movie Name"
+    alt="${film.title}"
     class="film-list__item-poster"
     loading="lazy"
     />
     <div class="film-list__item-info">
     <h3 class="film-list__item-title">${film.title}</h3>
    <span class="film-list__item-genres">жанри</span>
-   <span class="film-list__item-genres">${yearOfRelease[0]}</span>
-    <span class="film-list__item-rate">${film.vote_average}</span>
+   <span class="film-list__item-strip">|</span>
+   <span class="film-list__item-year">${yearOfRelease[0]}</span>
+      <span class="film-list__item-rate">&nbsp;${(
+        film.vote_average).toFixed(1)}&nbsp;</span>
     </div>
     </li>`)
 }))
@@ -88,15 +90,17 @@ function onBtnWatched() {
     refs.filmList.insertAdjacentHTML("beforeend",`<li id="" class="film-list__item">
     <img
     src=${posterLinkGenerate(film)}
-    alt="Movie Name"
+    alt="${film.title}"
     class="film-list__item-poster"
     loading="lazy"
     />
     <div class="film-list__item-info">
     <h3 class="film-list__item-title">${film.title}</h3>
    <span class="film-list__item-genres">жанри</span>
-   <span class="film-list__item-genres">${yearOfRelease[0]}</span>
-    <span class="film-list__item-rate">${film.vote_average}</span>
+   <span class="film-list__item-strip">|</span>
+   <span class="film-list__item-year">${yearOfRelease[0]}</span>
+      <span class="film-list__item-rate">&nbsp;${(
+        film.vote_average).toFixed(1)}&nbsp;</span>
     </div>
     </li>`)
 }))
