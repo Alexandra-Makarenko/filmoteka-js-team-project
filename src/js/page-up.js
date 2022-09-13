@@ -1,3 +1,4 @@
+import { offLoader, onLoader } from "./loader";
 const btnUpTop = document.querySelector('.page-up');
 
 window.addEventListener('scroll', followUpScroll);
@@ -16,8 +17,10 @@ function followUpScroll() {
 }
 
 export function pageUp() {
+  onLoader();
   if (window.pageYOffset > 0) {
     window.scrollBy(0, -30);
     setTimeout(pageUp, 0);
   }
+  offLoader();
 }
