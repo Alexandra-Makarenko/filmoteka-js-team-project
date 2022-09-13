@@ -1,8 +1,9 @@
 import { API_KEY } from './api-key';
 
 //заглушка айдішніків поки нема локального збереження
-const id = [616037, 532639, 361743, 760741, 762504, 616037, 532639, 361743, 760741, 762504, 616037, 532639, 361743, 760741, 762504]
-localStorage.setItem('watched', JSON.stringify(id))
+const id = [716037, 632639, 561743, 860741, 862504] //заглушка для черги
+const idw = [16037, 532630, 617430, 760412, 76504] //заглушка для переглянутого
+localStorage.setItem('watched', JSON.stringify(idw))
 localStorage.setItem('queue', JSON.stringify(id))
 
 const baseURL = "https://api.themoviedb.org/3/movie/"
@@ -29,6 +30,7 @@ const fetchQueueFilms = async (id) => {
 
 function onBtnQueue() {
   // hideMessage();
+    refs.filmList.innerHTML = '';
   if (!savedQueueFilms) {
     refs.filmList.innerHTML = '<p>Sorry, list is empty(</p>'
   } 
@@ -50,7 +52,7 @@ function onBtnQueue() {
     </div>
     </li>`)
 }))
-  refs.filmList.innerHTML = '';
+
 }
 
 //заховати повідомлення "будь ласка, оберіть категорію"
@@ -61,14 +63,15 @@ function onBtnQueue() {
 //   }
 // }
 
-const fetchWatchedFilms = async (id) => {
-  const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`);
+const fetchWatchedFilms = async (idw) => {
+  const response = await fetch(`https://api.themoviedb.org/3/movie/${idw}?api_key=${API_KEY}`);
   const films = await response.json();
   return films;
 };
 
 function onBtnWatched() {
   // hideMessage();
+    refs.filmList.innerHTML = '';
   if (!savedWatchedFilms) {
     refs.filmList.innerHTML = '<p>Sorry, list is empty(</p>'
   } 
@@ -90,5 +93,5 @@ function onBtnWatched() {
     </div>
     </li>`)
 }))
-  refs.filmList.innerHTML = '';
+
 }
