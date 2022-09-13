@@ -1,0 +1,6 @@
+.films { 
+  padding-top:20px;
+  @media screen and (min-width: $tablet) {
+      padding-top: 60px;
+      }
+}
