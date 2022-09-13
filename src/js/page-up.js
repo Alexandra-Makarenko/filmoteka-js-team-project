@@ -5,7 +5,6 @@ window.addEventListener('scroll', followUpScroll);
 btnUpTop.addEventListener('click', pageUp);
 
 function followUpScroll() {
-  onLoader();
   const scroll = window.pageYOffset;
   const coordinations = document.documentElement.clientHeight;
 
@@ -15,12 +14,13 @@ function followUpScroll() {
   if (scroll < coordinations) {
     btnUpTop.classList.remove('btn-up-show');
   }
-  offLoader();
 }
 
 export function pageUp() {
+  onLoader();
   if (window.pageYOffset > 0) {
     window.scrollBy(0, -30);
     setTimeout(pageUp, 0);
   }
+  offLoader();
 }
