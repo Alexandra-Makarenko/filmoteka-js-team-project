@@ -1,7 +1,6 @@
 import ApiTopFilms from './fetchTopFilms';
 import { arrayOfGenres } from './array-of-genres';
 import { createPagination, paginationOptions } from './pagination';
-import { onFetchGenres } from './api-genres';
 const topFilms = new ApiTopFilms();
 const filmListRef = document.querySelector('.film_list');
 
@@ -11,7 +10,6 @@ export function popularFilms(page) {
     generateListOfFilms(r);
     const totalPages = r.data.total_pages;
     const itemsPerPage = r.data.results.length;
-    // paginationOptions.startPage = page;
     console.log('api-top-films', page);
     createPagination(page, itemsPerPage, totalPages);
   });
@@ -52,43 +50,9 @@ export function decipherGenresIds(film) {
       }
       return [...[...r].slice(0, 2), ...['Other']];
     });
-
-  // const fullArrayOfGenres = arrayOfGenres.then(r => {
-  //   return r
-  //     .filter(genre => {
-  //       for (const id of film.genre_ids) {
-  //         if (id === genre.id) {
-  //           return genre.name;
-  //         }
-  //       }
-  //     })
-  //     .map(genre => genre.name);
-  // });
-  // const shortArrayOfGenres = fullArrayOfGenres.then(r => {
-  //   if (r.length < 3) {
-  //     return r;
-  //   }
-  //   return [...[...r].slice(0, 2), ...['Other']];
-  // });
-  // return shortArrayOfGenres;
-
-  // const genresArray = arrayOfGenres.then(r => r);
-  // const genres = genresArray
-  //   .filter(genre => {
-  //     for (const id of film.genre_ids) {
-  //       if (id === genre.id) {
-  //         return genre.name;
-  //       }
-  //     }
-  //   })
-  //   .map(genre => genre.name);
-  // if (genres.length < 3) {
-  //   return genres;
-  // }
-  // return [...[...genres].slice(0, 2), ...['Other']];
 }
 
-function onYearOfFilm(film) {
+export function onYearOfFilm(film) {
   const yearOfRelease = film.release_date.split('-');
   return yearOfRelease;
 }
@@ -116,8 +80,9 @@ export async function patternOfCard(film, genres, yearOfRelease) {
       <span class="film-list__item-genres">${asyncGenres.join(', ')}</span>
       <span class="film-list__item-strip">|</span>
       <span class="film-list__item-year">${yearOfRelease[0]}</span>
-      <span class="film-list__item-rate">&nbsp;${(
-        film.vote_average).toFixed(1)}&nbsp;</span>
+      <span class="film-list__item-rate">&nbsp;${film.vote_average.toFixed(
+        1
+      )}&nbsp;</span>
     </div>
   </div>
 </li>`;
