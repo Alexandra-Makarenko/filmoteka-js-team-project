@@ -7,7 +7,7 @@ import {
   backdrop,
 } from './modal-close';
 
-import { fetchMovieById } from './movie-modal';
+import { fetchMovieById } from './movie-modal-local-storage';
 import { offLoader, onLoader } from "../js/loader";
 // console.log(markupModalFilm());
 
