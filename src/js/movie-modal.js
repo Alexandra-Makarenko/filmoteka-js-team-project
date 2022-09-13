@@ -1,9 +1,8 @@
 import ApiTopFilms from './fetchTopFilms';
 import { genresArray } from './array-of-genres';
 import axios from 'axios';
-
 import { movieModal } from './modal-close';
-console.log(movieModal);
+import { Notify } from 'notiflix';
 
 export const IMG_BASE_URL = 'https://image.tmdb.org/t/p/'; // Base URL to get movies dates
 export const IMG_FILE_SIZE = 'w500';
@@ -14,7 +13,10 @@ export async function fetchMovieById(id, imgSrc) {
     api_key: '88804fe82d069d316bec59240a5ee94b',
   };
   const response = await axios.get(`${url}?api_key=${parmams.api_key}`);
-  console.log(response.data);
+
+  const watchedIdData = JSON.parse(localStorage.getItem('watched')) || [];
+  const queuedIdData = JSON.parse(localStorage.getItem('queued')) || [];
+
   movieModal.insertAdjacentHTML(
     'beforeend',
     `<div class="poster-img">
@@ -57,6 +59,58 @@ export async function fetchMovieById(id, imgSrc) {
   </div>
 </div>`
   );
+  // create constants for buttons queued and watched
+  const queuedBtn = document.querySelector('.movie-info__button--queued');
+  const watchedBtn = document.querySelector('.movie-info__button--watched');
+
+  //check local storage and disable necessary btns
+
+  if (watchedIdData.includes(id)) {
+    queuedBtn.disabled = true;
+    queuedBtn.textContent = 'Being watched';
+  }
+
+  if (queuedIdData.includes(id)) {
+    watchedBtn.disabled = true;
+    queuedBtn.textContent = 'Being queued';
+  }
+
+  // add to local storage on click + add notifications + change text on btns + make the required btns disabled
+
+  const onQueuedBtnClick = e => {
+    if (!queuedIdData.includes(id)) {
+      queuedIdData.push(id);
+      localStorage.setItem('queued', JSON.stringify(queuedIdData));
+      Notify.success('The film has been successfully added to Queued list');
+      watchedBtn.disabled = true;
+      queuedBtn.textContent = 'Being queued';
+    } else {
+      const queuedIdToRemove = queuedIdData.indexOf(id);
+      queuedIdData.splice(queuedIdToRemove, 1);
+      localStorage.setItem('queue', JSON.stringify(queuedIdData));
+      Notify.warning('The film has been removed from Queued list');
+      queuedBtn.textContent = 'add to queue';
+    }
+  };
+
+  const onWatchedBtnClick = e => {
+    if (!watchedIdData.includes(id)) {
+      watchedIdData.push(id);
+      localStorage.setItem('watched', JSON.stringify(watchedIdData));
+      Notify.success('The film has been successfully added to Watched list');
+      queuedBtn.disabled = true;
+      watchedBtn.textContent = 'Being watched';
+    } else {
+      const watchedIdToRemove = watchedIdData.indexOf(id);
+      watchedIdData.splice(watchedIdToRemove, 1);
+      localStorage.setItem('watched', JSON.stringify(watchedIdData));
+      Notify.warning('The film has been removed from Watched list');
+      watchedBtn.textContent = 'add to watched';
+    }
+  };
+
+  queuedBtn.addEventListener('click', onQueuedBtnClick);
+  watchedBtn.addEventListener('click', onWatchedBtnClick);
 }
 
 // export function markupModalFilm(film, imgSrc) {
