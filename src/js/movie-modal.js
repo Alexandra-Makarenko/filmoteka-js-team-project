@@ -3,7 +3,6 @@ import { genresArray } from './array-of-genres';
 import axios from 'axios';
 
 import { movieModal } from './modal-close';
-console.log(movieModal);
 
 export const IMG_BASE_URL = 'https://image.tmdb.org/t/p/'; // Base URL to get movies dates
 export const IMG_FILE_SIZE = 'w500';
@@ -14,7 +13,7 @@ export async function fetchMovieById(id, imgSrc) {
     api_key: '88804fe82d069d316bec59240a5ee94b',
   };
   const response = await axios.get(`${url}?api_key=${parmams.api_key}`);
-  console.log(response.data);
+
   movieModal.insertAdjacentHTML(
     'beforeend',
     `<div class="poster-img">

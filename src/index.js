@@ -1,10 +1,10 @@
 import './js/loader';
 import './sass/index.scss';
 import './js/api-key';
-import './js/search';
 import './js/api-top-films';
-import './js/local-storage';
+import './js/search';
 import './js/pagination';
+import './js/local-storage';
 import './js/page-up';
 import './js/array-of-genres';
 import './js/fetchTopFilms';

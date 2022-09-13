@@ -16,12 +16,9 @@ const body = document.querySelector('body');
 // вішаємо слухача для відкриття модалки з повною інформацією про фільм
 gallery.addEventListener('click', e => {
   if (e.target.closest('.film-list__item-poster')) {
-    console.log(e.target);
     const idAttribute = e.target.getAttribute('film-id');
-    console.log('id:', idAttribute);
 
     const imgSrc = e.target.getAttribute('src');
-    console.log('src:', imgSrc);
 
     body.style.overflow = 'hidden';
     modalVisible();
