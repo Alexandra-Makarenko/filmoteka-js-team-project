@@ -2,6 +2,7 @@ import ApiTopFilms from './fetchTopFilms';
 import { arrayOfGenres } from './array-of-genres';
 import { createPagination, paginationInit } from './pagination';
 import { onFetchGenres } from './api-genres';
+
 const topFilms = new ApiTopFilms();
 const filmListRef = document.querySelector('.film_list');
 
@@ -11,9 +12,9 @@ export function popularFilms(page) {
     generateListOfFilms(r);
     const totalPages = r.data.total_pages;
     const itemsPerPage = r.data.results.length;
-    // paginationOptions.startPage = page;
-    // console.log('api-top-films', page);
+
     paginationInit.searchType = 'popular films';
+
     createPagination(page, itemsPerPage, totalPages);
   });
 }
@@ -53,43 +54,9 @@ export function decipherGenresIds(film) {
       }
       return [...[...r].slice(0, 2), ...['Other']];
     });
-
-  // const fullArrayOfGenres = arrayOfGenres.then(r => {
-  //   return r
-  //     .filter(genre => {
-  //       for (const id of film.genre_ids) {
-  //         if (id === genre.id) {
-  //           return genre.name;
-  //         }
-  //       }
-  //     })
-  //     .map(genre => genre.name);
-  // });
-  // const shortArrayOfGenres = fullArrayOfGenres.then(r => {
-  //   if (r.length < 3) {
-  //     return r;
-  //   }
-  //   return [...[...r].slice(0, 2), ...['Other']];
-  // });
-  // return shortArrayOfGenres;
-
-  // const genresArray = arrayOfGenres.then(r => r);
-  // const genres = genresArray
-  //   .filter(genre => {
-  //     for (const id of film.genre_ids) {
-  //       if (id === genre.id) {
-  //         return genre.name;
-  //       }
-  //     }
-  //   })
-  //   .map(genre => genre.name);
-  // if (genres.length < 3) {
-  //   return genres;
-  // }
-  // return [...[...genres].slice(0, 2), ...['Other']];
 }
 
-function onYearOfFilm(film) {
+export function onYearOfFilm(film) {
   const yearOfRelease = film.release_date.split('-');
   return yearOfRelease;
 }
@@ -98,7 +65,7 @@ function posterLinkGenerate(film) {
   if (film.poster_path !== null) {
     return `"https://image.tmdb.org/t/p/w500${film.poster_path}"`;
   }
-  return `"/no-poster.636663e7.jpg"`;
+  return `"https://raw.githubusercontent.com/Alexandra-Makarenko/filmoteka-js-team-project/main/src/images/no-poster.jpg"`;
 }
 
 export async function patternOfCard(film, genres, yearOfRelease) {
