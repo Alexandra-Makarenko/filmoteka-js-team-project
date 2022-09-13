@@ -66,17 +66,26 @@
 
 .film-list__item-title {
   display: block;
-  font-size: 20px;
-  line-height: 1.2;
+  font-size: 12px;
+  line-height: calc(16 / 12);
   text-transform: uppercase;
   color: var(--second-color);
+  @media screen and (min-width: $desktop) {
+      font-size: 20px;
+      line-height: calc(24 / 20);
+    }
 }
+
 .film-list__item-strip,
 .film-list__item-year,
 .film-list__item-genres{
-  font-weight: 500;
   font-size: 12px;
+  line-height: calc(16 / 12);
   color: var(--accent-color);
+  @media screen and (min-width: $desktop) {
+    font-size: 20px;
+    line-height: calc(24 / 20);
+  }
 }
 
 .film-list__item-strip,
@@ -94,9 +103,10 @@
   background-color: var(--accent-color);
   margin-left: 5px;
   text-align: center;
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1280px) {
   width: 40px;
   height: 20px;
+  
   }
 }
 
@@ -105,4 +115,9 @@
   margin-bottom: 12px;
   //   width: 395px;
   //   height: 574px;
+}
+
+.film-list__item-details{
+  display: flex;
+  align-items: center;
 }
