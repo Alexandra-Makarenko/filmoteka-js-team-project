@@ -96,16 +96,12 @@ export async function fetchMovieById(id, imgSrc) {
   const onQueuedBtnClick = e => {
     if (!queuedIdData.includes(id)) {
       queuedIdData.push(id);
-      database = localStorage.setItem('queued', JSON.stringify(queuedIdData));
-      console.log(database)
       Notify.success('The film has been successfully added to Queued list');
       watchedBtn.disabled = true;
       queuedBtn.textContent = 'Being queued';
     } else {
       const queuedIdToRemove = queuedIdData.indexOf(id);
       queuedIdData.splice(queuedIdToRemove, 1);
-      database = localStorage.setItem('queue', JSON.stringify(queuedIdData));
-      console.log(database)
       Notify.warning('The film has been removed from Queued list');
       queuedBtn.textContent = 'add to queue';
     }
