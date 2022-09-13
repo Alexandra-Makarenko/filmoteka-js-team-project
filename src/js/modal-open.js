@@ -8,6 +8,7 @@ import {
 } from './modal-close';
 
 import { fetchMovieById } from './movie-modal';
+import { offLoader, onLoader } from "../js/loader";
 // console.log(markupModalFilm());
 
 const gallery = document.querySelector('.film_list');
@@ -16,6 +17,7 @@ const body = document.querySelector('body');
 // вішаємо слухача для відкриття модалки з повною інформацією про фільм
 gallery.addEventListener('click', e => {
   if (e.target.closest('.film-list__item-poster')) {
+    onLoader();
     const idAttribute = e.target.getAttribute('film-id');
 
     const imgSrc = e.target.getAttribute('src');
@@ -23,6 +25,7 @@ gallery.addEventListener('click', e => {
     body.style.overflow = 'hidden';
     modalVisible();
     setTimeout(() => {
+      offLoader();
       modalClose();
     }, 100);
     fetchMovieById(idAttribute, imgSrc);

@@ -1,9 +1,11 @@
+import { offLoader, onLoader } from "./loader";
 const btnUpTop = document.querySelector('.page-up');
 
 window.addEventListener('scroll', followUpScroll);
 btnUpTop.addEventListener('click', pageUp);
 
 function followUpScroll() {
+  onLoader();
   const scroll = window.pageYOffset;
   const coordinations = document.documentElement.clientHeight;
 
@@ -13,6 +15,7 @@ function followUpScroll() {
   if (scroll < coordinations) {
     btnUpTop.classList.remove('btn-up-show');
   }
+  offLoader();
 }
 
 export function pageUp() {

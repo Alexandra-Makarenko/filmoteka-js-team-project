@@ -9,7 +9,8 @@ const onLoader = () => {
 
 export { offLoader, onLoader };
 
-
+// onLoader();
+// offLoader();
 // import { offLoader, onLoader } from "../js/loader";
 
 const loaderMain = () => {
