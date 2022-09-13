@@ -47,6 +47,7 @@ export async function searchPages(page) {
   await data.results.map(film => {
     rendOneCard(film).then(r => {
       filmList.insertAdjacentHTML('beforeend', r);
+      offLoader();
     });
   });
   paginationInit.searchType = 'search films';
