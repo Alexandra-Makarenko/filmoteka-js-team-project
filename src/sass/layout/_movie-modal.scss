@@ -97,10 +97,14 @@
 }
 
 .movie-details {
-  margin-right: 40px;
+  width: 108px;
+}
+
+.movie-details--data {
+  margin-left: 40px;
 
   @media screen and (min-width: $desktop) {
-    margin-right: 84px;
+    margin-left: 84px;
   }
 }
 

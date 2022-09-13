@@ -1,6 +1,6 @@
 import ApiTopFilms from './fetchTopFilms';
-import { genresArray } from './array-of-genres';
 import axios from 'axios';
+import { arrayOfGenres } from './array-of-genres';
 
 import { movieModal } from './modal-close';
 console.log(movieModal);
@@ -35,17 +35,18 @@ export async function fetchMovieById(id, imgSrc) {
           1
         )}</span> / <span class="votes">${response.data.vote_count}</span>
       </li>
-      <li class="movie-details--data-item popularity">${
-        response.data.popularity
-      }</li>
+      <li class="movie-details--data-item popularity">${response.data.popularity.toFixed(
+        1
+      )}</li>
       <li class="movie-details--data-item original-title">${
         response.data.original_title
       }</li>
-      <li class="movie-details--data-item genre">жанри</li>
+      <li class="movie-details--data-item genre">жанри
+  </li>
     </ul>
   </div>
   <h3 class="movie-description">About</h3>
-  <p class="movie-description__text">
+  <p class="movie-description__text">${response.data.overview}
   </p>
   <div class="movie-popup__buttons">
   <button type="button" class="movie-info__button--watched">
