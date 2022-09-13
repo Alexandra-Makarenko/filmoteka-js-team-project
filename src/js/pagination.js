@@ -1,21 +1,22 @@
 import Pagination from 'tui-pagination';
 import { popularFilms } from './api-top-films';
+import { searchPages } from './search';
+import { pageUp } from './page-up';
 // import 'tui-pagination/dist/tui-pagination.css';
 // import iconPagination from '/src/images/svg/pagination.svg';
-import { pageUp } from './page-up';
 
 // const arrowIcon = `${iconPagination}#icon-arrow-start`;
 // const dotsIcon = `${iconPagination}#icon-dots`;
 
-export const paginationOptions = {
+export const paginationInit = {
   startPage: 1,
-  // searchType: null,
+  searchType: '',
   pagination: null,
   // totalItemsHome: null,
 };
 
 export const createPagination = (page, itemsPerPage, totalItems) => {
-  console.log(page, itemsPerPage, totalItems);
+  // console.log(page, itemsPerPage, totalItems);
   const options = {
     totalItems,
     itemsPerPage,
@@ -41,15 +42,20 @@ export const createPagination = (page, itemsPerPage, totalItems) => {
     },
   };
   const pagination = new Pagination('pagination', options);
-  paginationOptions.pagination = pagination;
+  paginationInit.pagination = pagination;
   // paginationSettings.pagination.reset(totalItems);
   // pagination.reset(totalItems);
 
   pagination.on('afterMove', async event => {
     const currentPage = event.page;
-    popularFilms(currentPage);
-    pageUp();
+    if (paginationInit.searchType === 'popular films') {
+      popularFilms(currentPage);
+      pageUp();
+    }
+    if (paginationInit.searchType === 'search films') {
+      searchPages(currentPage);
+      pageUp();
+    }
   });
-  // console.log(pagination);
   return pagination;
 };

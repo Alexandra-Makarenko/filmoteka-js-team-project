@@ -1,6 +1,8 @@
 import ApiTopFilms from './fetchTopFilms';
 import { arrayOfGenres } from './array-of-genres';
-import { createPagination, paginationOptions } from './pagination';
+import { createPagination, paginationInit } from './pagination';
+import { onFetchGenres } from './api-genres';
+
 const topFilms = new ApiTopFilms();
 const filmListRef = document.querySelector('.film_list');
 
@@ -10,12 +12,14 @@ export function popularFilms(page) {
     generateListOfFilms(r);
     const totalPages = r.data.total_pages;
     const itemsPerPage = r.data.results.length;
-    console.log('api-top-films', page);
+
+    paginationInit.searchType = 'popular films';
+
     createPagination(page, itemsPerPage, totalPages);
   });
 }
 
-popularFilms(paginationOptions.startPage);
+popularFilms(paginationInit.startPage);
 
 async function generateListOfFilms(r) {
   const listOfFilms = await r.data.results.map(film => {

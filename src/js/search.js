@@ -3,7 +3,9 @@
 import Notiflix from 'notiflix';
 import { API_KEY } from './api-key';
 import axios from 'axios';
+import { createPagination, paginationInit } from './pagination';
 import { rendOneCard } from './api-top-films';
+
 const BASE_URL = 'https://api.themoviedb.org/3/'; // нужно вынести ее в отдельный файл чтоб все могли экспортировать
 const searchQuery = document.querySelector('.search__input');
 const formSearch = document.querySelector('.header__search');
@@ -16,20 +18,20 @@ const createUrlFilmSearch = page => {
   userSearchData = searchQuery.value.trim();
   const urlFilmSearch = `${BASE_URL}search/movie?api_key=${API_KEY}&query=${userSearchData}&page=${page}`;
 
-  console.log(urlFilmSearch);
+  // console.log(urlFilmSearch);
   return urlFilmSearch;
 };
 
 const handleSearchSubmit = async event => {
   event.preventDefault();
   try {
-    searchPages(2);
+    searchPages(1);
   } catch (error) {
     console.log(error);
   }
 };
 
-async function searchPages(page) {
+export async function searchPages(page) {
   const urlFilmSearch = await createUrlFilmSearch(page);
   const response = await axios.get(urlFilmSearch);
   const { data } = response;
@@ -44,6 +46,11 @@ async function searchPages(page) {
       filmList.insertAdjacentHTML('beforeend', r);
     });
   });
+  paginationInit.searchType = 'search films';
+  const totalPages = data.total_pages;
+  const itemsPerPage = data.results.length;
+  createPagination(page, itemsPerPage, totalPages);
+  // console.log(userSearchData);
 }
 
 formSearch.addEventListener('submit', handleSearchSubmit);
