@@ -44,7 +44,6 @@ async function searchPages(page) {
       filmList.insertAdjacentHTML('beforeend', r);
     });
   });
-  console.log(userSearchData);
 }
 
 formSearch.addEventListener('submit', handleSearchSubmit);
