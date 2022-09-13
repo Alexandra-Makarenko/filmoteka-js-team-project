@@ -14,6 +14,20 @@ export async function fetchMovieById(id, imgSrc) {
   };
   const response = await axios.get(`${url}?api_key=${parmams.api_key}`);
 
+  const ganresOfFilm = await arrayOfGenres.then(r => {
+    return r
+      .filter(genre => {
+        for (let id = 0; id<19; id++) { //const id of film.genre_ids
+          if (id === genre.id) {
+            return genre.name;
+          }
+        }
+      })
+      .map(genre => genre.name);
+  })
+  .then(r => [...r]);
+  console.log(ganresOfFilm)
+
   movieModal.insertAdjacentHTML(
     'beforeend',
     `<div class="poster-img">
@@ -40,7 +54,7 @@ export async function fetchMovieById(id, imgSrc) {
       <li class="movie-details--data-item original-title">${
         response.data.original_title
       }</li>
-      <li class="movie-details--data-item genre">жанри
+      <li class="movie-details--data-item genre">${ganresOfFilm}
   </li>
     </ul>
   </div>
