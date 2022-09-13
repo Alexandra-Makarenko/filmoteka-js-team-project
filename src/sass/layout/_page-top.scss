@@ -7,8 +7,10 @@
   text-align: center;
   border-radius: 4px;
   position: fixed;
-  bottom: 10px;
-  right: 15px;
+
+  bottom: 30px;
+  right: 30px;
+
   transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
   opacity: 0;
   visibility: hidden;

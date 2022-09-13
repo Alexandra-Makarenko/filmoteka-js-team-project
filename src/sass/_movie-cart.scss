@@ -1,53 +1,25 @@
-.film_list {
-  margin: 0;
-}
-
 .film-list__item {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: scale 250ms linear, box-shadow 250ms linear;
-  cursor: pointer;
-}
-
-.film-list__item:hover,
-.film-list__item:focus {
-  scale: 1.006;
-}
-
-.film-list__item-poster {
+  background: var(--bg-color);
   border-radius: 5px;
-  margin-bottom: 10px;
-  //   width: 395px;
-  //   height: 574px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    -23px 0 20px -23px rgba(0, 0, 0, 0.6), 23px 0 20px -23px rgba(0, 0, 0, 0.6),
+    inset 0 0 40px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  
 }
 
-.film-list__item-title {
-  display: block;
-  font-size: 20px;
-  line-height: 1.2;
-  text-transform: uppercase;
-  color: var(--second-color);
-}
 
-.film-list__item-details {
-  font-size: 20px;
-  line-height: 1.2;
-  color: var(--accent-color);
-}
-
-.film-list__item-genres {
-  margin-right: 10px;
-}
-
-.film-list__item-year {
-  margin-left: 10px;
-}
 
 //MOBILE
 @media screen and (max-width: 767px) {
   .film-list__item:not(:last-child) {
     margin-bottom: 20px;
+  .film-list__item:nth-child(1){
+    margin-top: 20px;
+}
   }
 }
 
@@ -67,7 +39,7 @@
 }
 
 // DESKTOP
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) {
   .film_list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -79,4 +51,58 @@
   .film-list__item-poster {
     margin-bottom: 12px;
   }
+}
+
+.film-list__item:hover,
+.film-list__item:focus {
+  // scale: 1.006;
+  transform: scale(1.03);
+  transition: transform ease-in-out 150ms;
+}
+
+.film-list__item-info{
+  margin-top: 8px;
+  padding: 0 10px 5px;
+}
+
+.film-list__item-title {
+  display: block;
+  font-size: 20px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--second-color);
+}
+
+.film-list__item-year,
+.film-list__item-genres{
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--accent-color);
+}
+
+.film-list__item-year{
+  margin-left: 5px;
+}
+
+.film-list__item-rate{
+  width: 36px;
+  height: 16px;
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+  color: var(--main-color);
+  background-color: var(--accent-color);
+  margin-left: 5px;
+  text-align: center;
+  @media screen and (min-width: 769px) {
+  width: 40px;
+  height: 20px;
+  }
+}
+
+.film-list__item-poster {
+  border-radius: 5px;
+  margin-bottom: 12px;
+  //   width: 395px;
+  //   height: 574px;
 }

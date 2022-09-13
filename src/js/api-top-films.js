@@ -54,11 +54,11 @@ function posterLinkGenerate(film) {
   if (film.poster_path !== null) {
     return `"https://image.tmdb.org/t/p/w500${film.poster_path}"`;
   }
-  return `"/no-poster.636663e7.jpg"`;
+  return `"https://raw.githubusercontent.com/Alexandra-Makarenko/filmoteka-js-team-project/main/src/images/no-poster.jpg"`;
 }
 
 function patternOfCard(film, genres, yearOfRelease) {
-  return `<li film-id="${film.id} class="film-list__item">
+  return `<div film-id="${film.id}" class="film-list__item">
   <img
     src=${posterLinkGenerate(film)}
     alt="Movie Name"
@@ -67,10 +67,10 @@ function patternOfCard(film, genres, yearOfRelease) {
   />
   <div class="film-list__item-info">
     <h3 class="film-list__item-title">${film.title}</h3>
-    <div class="film-list__item-details">
-      <span class="film-list__item-genres">${genres.join(', ')}</span>|
-      <span class="film-list__item-year">${yearOfRelease[0]}</span>
+   <span class="film-list__item-genres">${genres.join(', ')}</span>
+   <span class="film-list__item-year">| ${yearOfRelease[0]}</span>
+    <span class="film-list__item-rate">&nbsp;${film.vote_average}&nbsp;</span>
     </div>
   </div>
-</li>`;
+  </div>`;
 }

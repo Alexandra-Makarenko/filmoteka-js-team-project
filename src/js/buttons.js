@@ -35,20 +35,21 @@ function onBtnQueue() {
   savedQueueFilms.map(film => fetchQueueFilms(film).then(film => 
   {
     const yearOfRelease = film.release_date.split('-');
-    refs.filmList.insertAdjacentHTML("beforeend",`<li id="" class="film-list__item">
-    <img
-    src="https://image.tmdb.org/t/p/w500${film.poster_path}"
+    refs.filmList.insertAdjacentHTML("beforeend",`<div film-id="${film.id}" class="film-list__item">
+  <img
+    src=${posterLinkGenerate(film)}
     alt="Movie Name"
     class="film-list__item-poster"
     loading="lazy"
-    />
-    <div class="film-list__item-info">
+  />
+  <div class="film-list__item-info">
     <h3 class="film-list__item-title">${film.title}</h3>
-   <span class="film-list__item-genres">жанри</span>
-   <span class="film-list__item-genres">${yearOfRelease[0]}</span>
-    <span class="film-list__item-rate">${film.vote_average}</span>
+   <span class="film-list__item-genres">${genres.join(', ')}</span>
+   <span class="film-list__item-year">| ${yearOfRelease[0]}</span>
+    <span class="film-list__item-rate">&nbsp;${film.vote_average}&nbsp;</span>
     </div>
-    </li>`)
+  </div>
+  </div>`)
 }))
   refs.filmList.innerHTML = '';
 }
@@ -75,20 +76,21 @@ function onBtnWatched() {
   savedWatchedFilms.map(film => fetchWatchedFilms(film).then(film => 
   {
     const yearOfRelease = film.release_date.split('-');
-    refs.filmList.insertAdjacentHTML("beforeend",`<li id="" class="film-list__item">
-    <img
-    src="https://image.tmdb.org/t/p/w500${film.poster_path}"
+    refs.filmList.insertAdjacentHTML("beforeend",`<div film-id="${film.id}" class="film-list__item">
+  <img
+    src=${posterLinkGenerate(film)}
     alt="Movie Name"
     class="film-list__item-poster"
     loading="lazy"
-    />
-    <div class="film-list__item-info">
+  />
+  <div class="film-list__item-info">
     <h3 class="film-list__item-title">${film.title}</h3>
-   <span class="film-list__item-genres">жанри</span>
-   <span class="film-list__item-genres">${yearOfRelease[0]}</span>
-    <span class="film-list__item-rate">${film.vote_average}</span>
+   <span class="film-list__item-genres">${genres.join(', ')}</span>
+   <span class="film-list__item-year">| ${yearOfRelease[0]}</span>
+    <span class="film-list__item-rate">&nbsp;${film.vote_average}&nbsp;</span>
     </div>
-    </li>`)
+  </div>
+  </div>`)
 }))
   refs.filmList.innerHTML = '';
 }
