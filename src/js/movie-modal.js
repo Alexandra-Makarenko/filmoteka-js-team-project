@@ -28,8 +28,8 @@ export async function fetchMovieById(id, imgSrc) {
   .then(r => [...r]);
   console.log(ganresOfFilm)
 
-//   const watchedIdData = JSON.parse(localStorage.getItem('watched')) || [];
-//   const queuedIdData = JSON.parse(localStorage.getItem('queued')) || [];
+  const watchedIdData = JSON.parse(localStorage.getItem('watched')) || [];
+  const queuedIdData = JSON.parse(localStorage.getItem('queued')) || [];
 
   movieModal.insertAdjacentHTML(
     'beforeend',
