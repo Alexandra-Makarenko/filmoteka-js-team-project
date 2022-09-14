@@ -24,7 +24,7 @@ function onBtnQueue() {
   hideMessage();
   refs.filmList.innerHTML = '';
   try{
-    const savedQueueFilms = JSON.parse(localStorage.getItem('queued').split(','));
+    const savedQueueFilms = JSON.parse(localStorage.getItem('queue').split(','));
     if(savedQueueFilms.length > 0){
       savedQueueFilms.map(film =>
         fetchQueueFilms(film).then(film => {
