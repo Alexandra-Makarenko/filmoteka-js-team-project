@@ -26,7 +26,9 @@ export async function fetchMovieById(id, imgSrc) {
       .map(genre => genre.name);
   })
   .then(r => [...r]);
-  console.log(ganresOfFilm)
+  // console.log(ganresOfFilm)
+  // localStorage.removeItem('watched')
+  // localStorage.removeItem('queued')
 
   const watchedIdData = JSON.parse(localStorage.getItem('watched')) || [];
   const queuedIdData = JSON.parse(localStorage.getItem('queued')) || [];
@@ -91,17 +93,18 @@ export async function fetchMovieById(id, imgSrc) {
   }
 
   // add to local storage on click + add notifications + change text on btns + make the required btns disabled
-  let database;
 
   const onQueuedBtnClick = e => {
     if (!queuedIdData.includes(id)) {
       queuedIdData.push(id);
+      localStorage.setItem('queued', JSON.stringify(queuedIdData));
       Notify.success('The film has been successfully added to Queued list');
       watchedBtn.disabled = true;
       queuedBtn.textContent = 'Being queued';
     } else {
       const queuedIdToRemove = queuedIdData.indexOf(id);
       queuedIdData.splice(queuedIdToRemove, 1);
+      localStorage.setItem('queued', JSON.stringify(queuedIdData));
       Notify.warning('The film has been removed from Queued list');
       queuedBtn.textContent = 'add to queue';
     }
