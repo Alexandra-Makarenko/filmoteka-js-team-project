@@ -26,9 +26,6 @@ export async function fetchMovieById(id, imgSrc) {
       .map(genre => genre.name);
   })
   .then(r => [...r]);
-  // console.log(ganresOfFilm)
-  // localStorage.removeItem('watched')
-  // localStorage.removeItem('queued')
 
   const watchedIdData = JSON.parse(localStorage.getItem('watched')) || [];
   const queuedIdData = JSON.parse(localStorage.getItem('queued')) || [];
@@ -76,6 +73,7 @@ export async function fetchMovieById(id, imgSrc) {
   </div>
 </div>`
   );
+  
   // create constants for buttons queued and watched
   const queuedBtn = document.querySelector('.movie-info__button--queued');
   const watchedBtn = document.querySelector('.movie-info__button--watched');
@@ -86,7 +84,7 @@ export async function fetchMovieById(id, imgSrc) {
     queuedBtn.disabled = true;
     queuedBtn.textContent = 'Being watched';
   }
-
+  
   if (queuedIdData.includes(id)) {
     watchedBtn.disabled = true;
     queuedBtn.textContent = 'Being queued';
