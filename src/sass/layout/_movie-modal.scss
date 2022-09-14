@@ -8,6 +8,10 @@
   overflow: scroll;
 }
 
+// button [disabled] {
+
+// }
+
 .movie-popup {
   padding: 44px 20px;
   background-color: var(--main-color);
@@ -72,7 +76,7 @@
   @media screen and (min-width: $tablet) {
     min-width: 264px;
     min-height: 374px;
-    margin-right: 68px;
+    margin-right: 20px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -94,6 +98,11 @@
     margin-top: 0;
     margin-bottom: 20px;
   }
+
+  @media screen and (min-width: $desktop) {
+    font-size: 30px;
+    line-height: 1.16;
+  }
 }
 
 .details-wrapper {
@@ -108,7 +117,7 @@
   margin-left: 40px;
 
   @media screen and (min-width: $desktop) {
-    margin-left: 84px;
+    margin-left: 40px;
   }
 }
 
@@ -207,6 +216,11 @@
     color: var(--main-color);
     background-color: var(--accent-color);
     border: 1px solid var(--accent-color);
+  }
+  &:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
   }
 }
 

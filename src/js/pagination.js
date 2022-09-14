@@ -2,27 +2,20 @@ import Pagination from 'tui-pagination';
 import { popularFilms } from './api-top-films';
 import { searchPages } from './search';
 import { pageUp } from './page-up';
-// import 'tui-pagination/dist/tui-pagination.css';
-// import iconPagination from '/src/images/svg/pagination.svg';
-
-// const arrowIcon = `${iconPagination}#icon-arrow-start`;
-// const dotsIcon = `${iconPagination}#icon-dots`;
 
 export const paginationInit = {
   startPage: 1,
   searchType: '',
   pagination: null,
-  // totalItemsHome: null,
 };
 
 export const createPagination = (page, itemsPerPage, totalItems) => {
-  // console.log(page, itemsPerPage, totalItems);
   const options = {
     totalItems,
     itemsPerPage,
     visiblePages: 5,
     page,
-    centerAlign: false,
+    centerAlign: true,
     template: {
       page: '<a href="#" class="tui-page-btn">{{page}}</a>',
       currentPage:
@@ -43,9 +36,6 @@ export const createPagination = (page, itemsPerPage, totalItems) => {
   };
   const pagination = new Pagination('pagination', options);
   paginationInit.pagination = pagination;
-  // paginationSettings.pagination.reset(totalItems);
-  // pagination.reset(totalItems);
-
   pagination.on('afterMove', async event => {
     const currentPage = event.page;
     if (paginationInit.searchType === 'popular films') {

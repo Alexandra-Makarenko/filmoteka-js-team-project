@@ -17,6 +17,10 @@ const filmList = document.querySelector('.film_list');
 
 const createUrlFilmSearch = page => {
   userSearchData = searchQuery.value.trim();
+  if (userSearchData === "") {
+    offLoader();
+    return "https://api.themoviedb.org/3/trending/movie/week?api_key=88804fe82d069d316bec59240a5ee94b&page=1";
+  }
   const urlFilmSearch = `${BASE_URL}search/movie?api_key=${API_KEY}&query=${userSearchData}&page=${page}`;
 
   // console.log(urlFilmSearch);
@@ -29,6 +33,7 @@ const handleSearchSubmit = async event => {
     searchPages(1);
   } catch (error) {
     console.log(error);
+    offLoader();
   }
 };
 
@@ -42,7 +47,7 @@ export async function searchPages(page) {
     offLoader();
     return;
   }
-  Notiflix.Notify.success('Success search');
+  // Notiflix.Notify.success('Success search');
   filmList.innerHTML = '';
   await data.results.map(film => {
     rendOneCard(film).then(r => {
