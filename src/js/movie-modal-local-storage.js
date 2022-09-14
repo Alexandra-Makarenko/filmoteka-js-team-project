@@ -14,21 +14,18 @@ export async function fetchMovieById(id, imgSrc) {
   };
   const response = await axios.get(`${url}?api_key=${parmams.api_key}`);
 
-  const ganresOfFilm = await arrayOfGenres
-    .then(r => {
-      return r
-        .filter(genre => {
-          for (let id = 0; id < 19; id++) {
-            //const id of film.genre_ids
-            if (id === genre.id) {
-              return genre.name;
-            }
+  const ganresOfFilm = await arrayOfGenres.then(r => {
+    return r
+      .filter(genre => {
+        for (let id = 0; id<19; id++) { //const id of film.genre_ids
+          if (id === genre.id) {
+            return genre.name;
           }
-        })
-        .map(genre => genre.name);
-    })
-    .then(r => [...r]);
-  console.log(ganresOfFilm);
+        }
+      })
+      .map(genre => genre.name);
+  })
+  .then(r => [...r]);
 
   const watchedIdData = JSON.parse(localStorage.getItem('watched')) || [];
   const queuedIdData = JSON.parse(localStorage.getItem('queue')) || [];
@@ -76,6 +73,7 @@ export async function fetchMovieById(id, imgSrc) {
   </div>
 </div>`
   );
+  
   // create constants for buttons queued and watched
   const queuedBtn = document.querySelector('.movie-info__button--queued');
   const watchedBtn = document.querySelector('.movie-info__button--watched');
@@ -86,7 +84,7 @@ export async function fetchMovieById(id, imgSrc) {
     queuedBtn.disabled = true;
     watchedBtn.textContent = 'Being watched';
   }
-
+  
   if (queuedIdData.includes(id)) {
     watchedBtn.disabled = true;
     queuedBtn.textContent = 'Being queued';

@@ -20,19 +20,23 @@ const fetchQueueFilms = async id => {
 };
 
 function onBtnQueue() {
+  // onLoader();
   hideMessage();
   refs.filmList.innerHTML = '';
   try{
     const savedQueueFilms = JSON.parse(localStorage.getItem('queued').split(','));
-    savedQueueFilms.map(film =>
-      fetchQueueFilms(film).then(film => {
-        rendOneCard(film).then(r => {
-          refs.filmList.insertAdjacentHTML('beforeend', r);
-        });
-      })
-    );
+    if(savedQueueFilms.length > 0){
+      savedQueueFilms.map(film =>
+        fetchQueueFilms(film).then(film => {
+          rendOneCard(film).then(r => {
+            refs.filmList.insertAdjacentHTML('beforeend', r);
+            // offLoader();
+          });
+        })
+      );
+    } else listIsEmpty()
   } catch (error) {
-    refs.filmList.innerHTML = '<p class="library-message">Sorry, list is empty(</p>';
+    listIsEmpty()
   }
 }
 
@@ -50,17 +54,23 @@ function onBtnWatched() {
   refs.filmList.innerHTML = '';
   try{
   const savedWatchedFilms = JSON.parse(localStorage.getItem('watched').split(','));
-  savedWatchedFilms.map(film =>
-    fetchWatchedFilms(film).then(film => {
-      rendOneCard(film).then(r => {
-        refs.filmList.insertAdjacentHTML('beforeend', r);
-        // offLoader();
-      });
-    })
-  );
+  if(savedWatchedFilms.length > 0){
+    savedWatchedFilms.map(film =>
+      fetchWatchedFilms(film).then(film => {
+        rendOneCard(film).then(r => {
+          refs.filmList.insertAdjacentHTML('beforeend', r);
+          // offLoader();
+        });
+      })
+    );
+  } else listIsEmpty()
   } catch (error){
-    refs.filmList.innerHTML = '<p class="library-message">Sorry, list is empty(</p>';
+    listIsEmpty()
   }
+}
+
+function listIsEmpty(){
+  refs.filmList.innerHTML = '<p class="library-message">Sorry, list is empty(</p>';
 }
 
 //заховати повідомлення "будь ласка, оберіть категорію"
