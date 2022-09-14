@@ -20,7 +20,7 @@ const fetchQueueFilms = async id => {
 };
 
 function onBtnQueue() {
-  // onLoader();
+   onLoader();
   hideMessage();
   refs.filmList.innerHTML = '';
   try{
@@ -30,7 +30,7 @@ function onBtnQueue() {
         fetchQueueFilms(film).then(film => {
           rendOneCard(film).then(r => {
             refs.filmList.insertAdjacentHTML('beforeend', r);
-            // offLoader();
+             offLoader();
           });
         })
       );
@@ -49,7 +49,7 @@ const fetchWatchedFilms = async idw => {
 };
 
 function onBtnWatched() {
-  // onLoader();
+   onLoader();
   hideMessage();
   refs.filmList.innerHTML = '';
   try{
@@ -59,7 +59,7 @@ function onBtnWatched() {
       fetchWatchedFilms(film).then(film => {
         rendOneCard(film).then(r => {
           refs.filmList.insertAdjacentHTML('beforeend', r);
-          // offLoader();
+           offLoader();
         });
       })
     );
