@@ -1,5 +1,5 @@
 import './js/loader';
-// import './sass/index.scss';
+import './sass/index.scss';
 import './js/api-key';
 import './js/api-top-films';
 import './js/search';
