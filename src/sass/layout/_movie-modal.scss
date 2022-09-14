@@ -98,6 +98,11 @@
     margin-top: 0;
     margin-bottom: 20px;
   }
+
+  @media screen and (min-width: $desktop) {
+    font-size: 30px;
+    line-height: 1.16;
+  }
 }
 
 .details-wrapper {
@@ -112,7 +117,7 @@
   margin-left: 40px;
 
   @media screen and (min-width: $desktop) {
-    margin-left: 84px;
+    margin-left: 40px;
   }
 }
 
