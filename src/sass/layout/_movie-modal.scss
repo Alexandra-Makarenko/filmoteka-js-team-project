@@ -8,6 +8,12 @@
   overflow: scroll;
 }
 
+
+
+    // button [disabled] {
+     
+    // }
+
 .movie-popup {
   padding: 44px 20px;
   background-color: var(--main-color);
@@ -18,6 +24,8 @@
   width: 95%;
   max-width: 280px;
   overflow: scroll;
+
+
 
   @media screen and (max-width: $tablet) {
     max-height: 600px;
@@ -202,12 +210,19 @@
   border: 1px solid var(--second-color);
   padding: 13px;
 
-  &:hover,
-  &:focus {
+
+  &:hover, &:focus
+  {
     color: var(--main-color);
     background-color: var(--accent-color);
     border: 1px solid var(--accent-color);
   }
+    &:disabled {
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
+      
 }
 
 .movie-info__button--queued {

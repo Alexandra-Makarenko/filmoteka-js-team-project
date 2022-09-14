@@ -2,7 +2,7 @@ import ApiTopFilms from './fetchTopFilms';
 import axios from 'axios';
 import { movieModal } from './modal-close';
 import { Notify } from 'notiflix';
-import { arrayOfGenres } from './array-of-genres'
+import { arrayOfGenres } from './array-of-genres';
 
 export const IMG_BASE_URL = 'https://image.tmdb.org/t/p/'; // Base URL to get movies dates
 export const IMG_FILE_SIZE = 'w500';
@@ -14,24 +14,24 @@ export async function fetchMovieById(id, imgSrc) {
   };
   const response = await axios.get(`${url}?api_key=${parmams.api_key}`);
 
-  const ganresOfFilm = await arrayOfGenres.then(r => {
-    return r
-      .filter(genre => {
-        for (let id = 0; id<19; id++) { //const id of film.genre_ids
-          if (id === genre.id) {
-            return genre.name;
+  const ganresOfFilm = await arrayOfGenres
+    .then(r => {
+      return r
+        .filter(genre => {
+          for (let id = 0; id < 19; id++) {
+            //const id of film.genre_ids
+            if (id === genre.id) {
+              return genre.name;
+            }
           }
-        }
-      })
-      .map(genre => genre.name);
-  })
-  .then(r => [...r]);
-  // console.log(ganresOfFilm)
-  // localStorage.removeItem('watched')
-  // localStorage.removeItem('queued')
+        })
+        .map(genre => genre.name);
+    })
+    .then(r => [...r]);
+  console.log(ganresOfFilm);
 
   const watchedIdData = JSON.parse(localStorage.getItem('watched')) || [];
-  const queuedIdData = JSON.parse(localStorage.getItem('queued')) || [];
+  const queuedIdData = JSON.parse(localStorage.getItem('queue')) || [];
 
   movieModal.insertAdjacentHTML(
     'beforeend',
@@ -84,7 +84,7 @@ export async function fetchMovieById(id, imgSrc) {
 
   if (watchedIdData.includes(id)) {
     queuedBtn.disabled = true;
-    queuedBtn.textContent = 'Being watched';
+    watchedBtn.textContent = 'Being watched';
   }
 
   if (queuedIdData.includes(id)) {
@@ -92,22 +92,32 @@ export async function fetchMovieById(id, imgSrc) {
     queuedBtn.textContent = 'Being queued';
   }
 
+  let database;
   // add to local storage on click + add notifications + change text on btns + make the required btns disabled
 
   const onQueuedBtnClick = e => {
+    console.log('click queued');
     if (!queuedIdData.includes(id)) {
       queuedIdData.push(id);
-      localStorage.setItem('queued', JSON.stringify(queuedIdData));
+      localStorage.setItem('queue', JSON.stringify(queuedIdData));
       Notify.success('The film has been successfully added to Queued list');
       watchedBtn.disabled = true;
       queuedBtn.textContent = 'Being queued';
     } else {
       const queuedIdToRemove = queuedIdData.indexOf(id);
       queuedIdData.splice(queuedIdToRemove, 1);
-      localStorage.setItem('queued', JSON.stringify(queuedIdData));
+      localStorage.setItem('queue', JSON.stringify(queuedIdData));
       Notify.warning('The film has been removed from Queued list');
       queuedBtn.textContent = 'add to queue';
+      watchedBtn.disabled = false;
     }
+
+    // need to think how to realise this.... probably check the event on div  .movie-popup__buttons
+    // if ((watchedBtn.textContent = 'Being watched')) {
+    //   Notify.failure(
+    //     'You are not able to add this film to queue, please remove from Watched list first'
+    //   );
+    // }
   };
 
   const onWatchedBtnClick = e => {
@@ -123,6 +133,7 @@ export async function fetchMovieById(id, imgSrc) {
       localStorage.setItem('watched', JSON.stringify(watchedIdData));
       Notify.warning('The film has been removed from Watched list');
       watchedBtn.textContent = 'add to watched';
+      queuedBtn.disabled = false;
     }
   };
 
