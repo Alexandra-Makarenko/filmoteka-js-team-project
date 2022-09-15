@@ -3,6 +3,8 @@ import axios from 'axios';
 import { movieModal } from './modal-close';
 import { Notify } from 'notiflix';
 import { arrayOfGenres } from './array-of-genres';
+import * as basicLightbox from 'basiclightbox';
+import 'basiclightbox/dist/basicLightbox.min.css';
 
 export const IMG_BASE_URL = 'https://image.tmdb.org/t/p/'; // Base URL to get movies dates
 export const IMG_FILE_SIZE = 'w500';
@@ -34,6 +36,9 @@ export async function fetchMovieById(id, imgSrc) {
   movieModal.insertAdjacentHTML(
     'beforeend',
     `<div class="poster-img">
+    <img class="youtube-logo" src="https://raw.githubusercontent.com/Alexandra-Makarenko/filmoteka-js-team-project/main/src/images/youtube-logo.png" alt="youtube logo">
+    <button type="button" class="movie-info__button--trailer" data-id="${id}">
+  </button>
   <img src="${imgSrc}" alt="poster" />
 </div>
 <div class="movie-info">
@@ -78,7 +83,7 @@ export async function fetchMovieById(id, imgSrc) {
   // create constants for buttons queued and watched
   const queuedBtn = document.querySelector('.movie-info__button--queued');
   const watchedBtn = document.querySelector('.movie-info__button--watched');
-
+  const youtubeBtn = document.querySelector('.movie-info__button--trailer');
   //check local storage and disable necessary btns
 
   if (watchedIdData.includes(id)) {
@@ -119,6 +124,26 @@ export async function fetchMovieById(id, imgSrc) {
     // }
   };
 
+  const movieurl = `${url}/videos?api_key=${parmams.api_key}`;
+
+  function openTrailer () {
+    fetch(movieurl).then((res) => res.json())
+      .then((data) => {
+    const key = data.results[0].key;
+        const modal = basicLightbox.create(`
+  <iframe width="680" height="415" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>     
+     `);
+    modal.show();
+    
+      })
+      .catch(error => {
+      const modal = basicLightbox.create(`
+    <iframe width="680" height="415" src="https://www.youtube.com/embed/6DhiiFGk4_s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      `);
+        modal.show();
+    });
+}
+
   const onWatchedBtnClick = e => {
     if (!watchedIdData.includes(id)) {
       watchedIdData.push(id);
@@ -138,4 +163,12 @@ export async function fetchMovieById(id, imgSrc) {
 
   queuedBtn.addEventListener('click', onQueuedBtnClick);
   watchedBtn.addEventListener('click', onWatchedBtnClick);
+  youtubeBtn.addEventListener('click', function (e) {
+        openTrailer();
+  });
 }
+
+
+// -----------------------------------------------------------
+
+
