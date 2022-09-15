@@ -1,0 +1,249 @@
+.modal-backdrop {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.56);
+  transition: opacity 350ms, visibility 350ms;
+  overflow: scroll;
+}
+
+// button [disabled] {
+
+// }
+
+.movie-popup {
+  padding: 44px 20px;
+  background-color: var(--main-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  max-width: 280px;
+  overflow: scroll;
+
+  @media screen and (max-width: $tablet) {
+    max-height: 600px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    padding: 40px 72px 40px 36px;
+    min-width: 704px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding: 40px 12px;
+    min-width: 806px;
+  }
+}
+
+.menu-close-button {
+  display: block;
+
+  stroke: var(--second-color);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 8px;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    stroke: var(--accent-color);
+  }
+  @media screen and (min-width: $tablet) {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+.movie-wrapper {
+  @media screen and (min-width: $tablet) {
+    display: flex;
+  }
+}
+
+.poster-img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--second-color);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 5px;
+
+  @media screen and (min-width: $tablet) {
+    min-width: 264px;
+    min-height: 374px;
+    margin-right: 20px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    min-width: 375px;
+    min-height: 478px;
+    margin-right: 16px;
+  }
+}
+
+.movie-title {
+  margin: 20px 0;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  color: black;
+
+  @media screen and (min-width: $tablet) {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    font-size: 30px;
+    line-height: 1.16;
+  }
+}
+
+.details-wrapper {
+  display: flex;
+}
+
+.movie-details {
+  width: 108px;
+}
+
+.movie-details--data {
+  margin-left: 40px;
+
+  @media screen and (min-width: $desktop) {
+    margin-left: 40px;
+  }
+}
+
+.movie-details--item {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--modal-details-color);
+  padding-bottom: 8px;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.movie-details--data-item {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000000;
+  padding-bottom: 8px;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.vote {
+  color: var(--main-color);
+  background-color: var(--accent-color);
+  padding: 1px 9px;
+  border-radius: 5px;
+}
+
+.original-title {
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+}
+
+.genre {
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.movie-description {
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  color: var(--second-color);
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.movie-description__text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.66;
+  color: var(--second-color);
+}
+
+.movie-popup__buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: $tablet) {
+    justify-content: space-between;
+  }
+  @media screen and (min-width: $desktop) {
+    justify-content: flex-start;
+  }
+}
+
+.movie-info__button--queued,
+.movie-info__button--watched {
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  width: 110px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  transition: color, background-color, border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  color: var(--second-color);
+  background-color: transparent;
+  border: 1px solid var(--second-color);
+  padding: 13px;
+
+  &:hover,
+  &:focus {
+    color: var(--main-color);
+    background-color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+  }
+  &:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+  }
+}
+
+.movie-info__button--queued {
+  white-space: nowrap;
+
+  @media screen and (min-width: $tablet) {
+    width: 125px;
+    padding: 10px 14px;
+  }
+}
+.movie-info__button--watched {
+  padding: 6px 27px;
+  margin-right: 20px;
+
+  @media screen and (min-width: $tablet) {
+    width: 125px;
+    padding: 10px 14px;
+    white-space: nowrap;
+    margin-right: 0;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-left: 24px;
+    margin-right: 15px;
+  }
+}
