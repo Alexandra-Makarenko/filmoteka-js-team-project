@@ -20,7 +20,7 @@
   width: 450px;
   min-height: 482px;
   background-color: var(--footer-bg-color);
-  overflow-y: auto;
+
   @media screen and (max-width: $pre-tablet) {
     width: 100%;
     overflow-y: scroll;
