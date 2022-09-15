@@ -23,10 +23,6 @@
   background-color: var(--footer-bg-color);
   overflow-y: scroll;
 
-  // @media screen and (max-width: $pre-tablet) {
-    
-  //   // overflow-y: scroll;
-  // }
 
   @media screen and (min-width: $tablet) {
     padding: 24px;
