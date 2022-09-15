@@ -224,6 +224,16 @@
   }
 }
 
+.movie-info__button--trailer{
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: url("https://raw.githubusercontent.com/Alexandra-Makarenko/filmoteka-js-team-project/main/src/images/youtube-logo.png") repeat-y;
+background-size: 28px;
+cursor: pointer;
+}
+
 .movie-info__button--queued {
   white-space: nowrap;
 
