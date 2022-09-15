@@ -18,23 +18,27 @@
 }
 
 .modal-footer {
-  width: 450px;
-  min-height: 482px;
+  width: 100%;
+  min-height: 90%;
   background-color: var(--footer-bg-color);
+  overflow-y: scroll;
 
-  @media screen and (max-width: $pre-tablet) {
-    width: 100%;
-    overflow-y: scroll;
-  }
+  // @media screen and (max-width: $pre-tablet) {
+    
+  //   // overflow-y: scroll;
+  // }
 
   @media screen and (min-width: $tablet) {
-    padding: 10px;
+    padding: 24px;
+    min-height:auto;
+    width: 90%;
   }
 
   @media screen and (min-width: $desktop) {
-    min-width: 728px;
-    min-height: 600px;
-    padding: 10px;
+   
+    // min-width: 728px;
+    // min-height: 600px;
+    // padding: 10px 0 10px 10px;
   }
 
   position: absolute;
@@ -49,21 +53,21 @@
 .modal-close {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 18px;
+  height: 18px;
   background-color: var(--main-color);
   cursor: pointer;
 
-  position: absolute;
-  right: -13px;
-  top: -13px;
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  left: 2px;
 
-  @media screen and (max-width: $pre-tablet) {
-    width: 20px;
-    height: 20px;
-    top: -3px;
-    right: 1px;
-  }
+  @media screen and (min-width: $tablet) {
+  width: 30px;
+    height: 30px;
+    margin-bottom: 30px;
+    }
 }
 
 .close {
@@ -82,21 +86,21 @@
 }
 
 .img-team {
-  @media screen and (min-width: $mobile) {
+
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+
 
   @media screen and (min-width: $tablet) {
     width: 100%;
-    height: 140px;
+    // height: 140px;
     object-fit: cover;
   }
 
   @media screen and (min-width: $desktop) {
     width: 100%;
-    height: 164px;
+    height: 100%;
     object-fit: cover;
   }
 }
@@ -107,19 +111,20 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 475px;
+    height: 100%;
   }
 
   @media screen and (min-width: $tablet) {
     display: flex;
     flex-wrap: wrap;
     margin-right: -10px;
+    height: auto;
   }
 }
 
 .scene {
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 22px;
   perspective: 600px;
   border-radius: 4px;
 
@@ -130,8 +135,7 @@
   }
 
   @media screen and (min-width: $tablet) {
-    width: 120px;
-    height: 160px;
+    height: 200px;
 
     display: flex;
     flex-wrap: wrap;
@@ -146,7 +150,7 @@
 
   @media screen and (min-width: $desktop) {
     width: 160px;
-    height: 187px;
+    height: 300px;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 10px;
