@@ -3,20 +3,6 @@
 }
 
 .footer-logo {
-  @media screen and (max-width: $tablet) {
-    display: block;
-    padding-left: 0;
-    text-align: center;
-    padding-top: 20px;
-  }
-  @media screen and (min-width: $tablet) {
-    padding-left: 50px;
-    padding-top: 30px;
-  }
-  @media screen and (min-width: $desktop) {
-    padding-left: 110px;
-    padding-top: 30px;
-  }
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -25,6 +11,24 @@
 
   text-decoration: none;
   color: var(--footer-text-color);
+
+  display: block;
+
+  @media screen and (max-width: $tablet) {
+    padding-left: 0;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    padding-left: 50px;
+    padding-top: 30px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding-left: 10px;
+    padding-top: 30px;
+  }
 }
 
 .footer-logo::before {
@@ -235,17 +239,26 @@
   }
 }
 
-.heart-svg {
-  margin-right: 10px;
+.heart-svg-left {
+  fill: #3e29ff;
   margin-left: 10px;
-  fill: var(--accent-color);
+  animation: animate150 1500ms infinite 1500ms;
 }
-// .footer-link::before {
-//   content: '';
-//   display: inline-block;
-//   width: 14px;
-//   height: 13px;
-//   margin-right: 10px;
-//   background-image: url(../images/svg/Vector.svg);
-//   background-size: contain;
-// }
+
+.heart-svg-right {
+  fill: #ffd706;
+  margin-right: 10px;
+  animation: animate150 1500ms infinite 750ms;
+}
+
+@keyframes animate150 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
