@@ -83,11 +83,13 @@ export async function fetchMovieById(id, imgSrc) {
 
   if (watchedIdData.includes(id)) {
     queuedBtn.disabled = true;
+    watchedBtn.classList.add('clicked');
     watchedBtn.textContent = 'Being watched';
   }
 
   if (queuedIdData.includes(id)) {
     watchedBtn.disabled = true;
+    queuedBtn.classList.add('clicked');
     queuedBtn.textContent = 'Being queued';
   }
 
@@ -108,6 +110,7 @@ export async function fetchMovieById(id, imgSrc) {
       localStorage.setItem('queue', JSON.stringify(queuedIdData));
       Notify.warning('The film has been removed from Queued list');
       queuedBtn.textContent = 'add to queue';
+      queuedBtn.classList.remove('clicked');
       watchedBtn.disabled = false;
     }
 
@@ -132,6 +135,7 @@ export async function fetchMovieById(id, imgSrc) {
       localStorage.setItem('watched', JSON.stringify(watchedIdData));
       Notify.warning('The film has been removed from Watched list');
       watchedBtn.textContent = 'add to watched';
+      watchedBtn.classList.remove('clicked');
       queuedBtn.disabled = false;
     }
   };
