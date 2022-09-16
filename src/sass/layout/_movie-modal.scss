@@ -226,13 +226,27 @@
 
 .movie-info__button--trailer{
   position: absolute;
+  top: 5px;
+  left: 5px;
   width: 32px;
   height: 32px;
   border-radius: 50%;
   background: url("https://raw.githubusercontent.com/Alexandra-Makarenko/filmoteka-js-team-project/main/src/images/youtube-logo.png") repeat-y;
-background-size: 28px;
+background-size: 29px;
 cursor: pointer;
+animation: pulse 1500ms infinite 1000ms;
 }
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #cd211eef;
+  }
+
+  75% {
+    box-shadow: 0 0 0 10px #648DE500;
+  }
+}
+
 
 .movie-info__button--queued {
   white-space: nowrap;
