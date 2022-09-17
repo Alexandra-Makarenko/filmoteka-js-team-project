@@ -34,6 +34,8 @@ export async function fetchMovieById(id, imgSrc) {
   movieModal.insertAdjacentHTML(
     'beforeend',
     `<div class="poster-img">
+    <button type="button" class="movie-info__button--trailer" data-id="${id}">
+  </button>
   <img src="${imgSrc}" alt="poster" />
 </div>
 <div class="movie-info">
@@ -122,6 +124,27 @@ export async function fetchMovieById(id, imgSrc) {
     // }
   };
 
+
+  const movieurl = `${url}/videos?api_key=${parmams.api_key}`;
+
+  function openTrailer () {
+    fetch(movieurl).then((res) => res.json())
+      .then((data) => {
+    const key = data.results[0].key;
+        const modal = basicLightbox.create(`
+  <iframe width="680" height="415" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>     
+     `);
+    modal.show();
+    
+      })
+      .catch(error => {
+      const modal = basicLightbox.create(`
+    <iframe width="680" height="415" src="https://www.youtube.com/embed/6DhiiFGk4_s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      `);
+        modal.show();
+    });
+  }
+  
   const onWatchedBtnClick = e => {
     if (!watchedIdData.includes(id)) {
       watchedIdData.push(id);
